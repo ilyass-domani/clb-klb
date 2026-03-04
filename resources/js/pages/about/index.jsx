@@ -1,6 +1,6 @@
 import { Head } from '@inertiajs/react';
 import AppLayout from '@/layouts/app-layout';
-import HeroSection from './Partials/HeroSection';
+import PageHero from '@/components/PageHero';
 import WhoWeAreSection from './Partials/WhoWeAreSection';
 import VisionSection from './Partials/VisionSection';
 import ActivitiesSection from './Partials/ActivitiesSection';
@@ -12,7 +12,7 @@ function AboutIndex() {
         <>
             <AppLayout>
                 <Head title="À propos" />
-                <HeroSection />
+                <PageHero subtitle="faire connaissance" title="À propos de nous" />
                 <WhoWeAreSection />
                 <VisionSection />
                 <ActivitiesSection />
