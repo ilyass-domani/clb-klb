@@ -24,11 +24,11 @@ const setCookie = (name: string, value: string, days = 365): void => {
     document.cookie = `${name}=${value};path=/;max-age=${maxAge};SameSite=Lax`;
 };
 
-const getStoredAppearance = (): Appearance => {
-    if (typeof window === 'undefined') return 'system';
+// const getStoredAppearance = (): Appearance => {
+//     if (typeof window === 'undefined') return 'system';
 
-    return (localStorage.getItem('appearance') as Appearance) || 'system';
-};
+//     return (localStorage.getItem('appearance') as Appearance) || 'system';
+// };
 
 const isDarkMode = (appearance: Appearance): boolean => {
     return appearance === 'dark' || (appearance === 'system' && prefersDark());
@@ -84,7 +84,7 @@ export function useAppearance(): UseAppearanceReturn {
         [appearance],
     );
 
-    const updateAppearance = useCallback((mode: Appearance): void => {
+    const updateAppearance = useCallback((): void => {
         // Force light mode: ignore dark and system
         const effectiveMode: Appearance = 'light';
         currentAppearance = effectiveMode;
