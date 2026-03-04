@@ -62,6 +62,10 @@
 }
 
 :root {
+    --color-alpha: #e81123;
+    --color-cl-beta: #a1a3a8;
+    --color--cl-black: #000000;
+    --color-cl-white: #ffffff;
     --background: oklch(1 0 0);
     --foreground: oklch(0.145 0 0);
     --card: oklch(1 0 0);
