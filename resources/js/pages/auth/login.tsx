@@ -1,13 +1,13 @@
 import { Form, Head, Link } from '@inertiajs/react';
-import type { ComponentType } from 'react';
+// import type { ComponentType } from 'react';
 import InputError from '@/components/input-error';
-import PageHero from '@/components/PageHero';
+// import PageHero from '@/components/PageHero';
 
-const PageHeroTyped = PageHero as unknown as ComponentType<{
-    subtitle?: string;
-    title: string;
-    backgroundImage?: string;
-}>;
+// const PageHeroTyped = PageHero as unknown as ComponentType<{
+//     subtitle?: string;
+//     title: string;
+//     backgroundImage?: string;
+// }>;
 import { register } from '@/routes';
 import { store } from '@/routes/login';
 
