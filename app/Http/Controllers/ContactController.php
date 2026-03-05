@@ -16,7 +16,8 @@ final class ContactController extends Controller
      */
     public function index(): Response
     {
-        return Inertia::render('contact/index');
+        $contact = ContactMessage::all();
+        return Inertia::render('user/contact/index');
     }
 
     /**

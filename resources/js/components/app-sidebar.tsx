@@ -18,8 +18,13 @@ import type { NavItem } from '@/types';
 const mainNavItems: NavItem[] = [
     {
         title: 'Dashboard',
-        href: '/dashboard',
+        href: '/admin/dashboard',
         icon: LayoutGrid,
+    },
+    {
+        title: 'blogs',
+        href: '/admin/blogs',
+        icon: BookOpen,
     },
 ];
 
