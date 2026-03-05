@@ -12,6 +12,7 @@ class Blog extends Model
         'category_slug',
         'image',
         'title',
+        'slug',
         'description',
         'body',
         'published_at',
@@ -21,6 +22,7 @@ class Blog extends Model
     {
         return [
             'title' => 'array',
+            'slug' => 'array',
             'description' => 'array',
             'body' => 'array',
             'published_at' => 'datetime',

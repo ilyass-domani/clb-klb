@@ -24,6 +24,6 @@ Route::group(['middleware' => 'auth', 'role:admin', 'verified'], function () {
 
 
 require __DIR__ . '/blog.php';
+require __DIR__ . '/dashboard/blogs.php';
 require __DIR__ . '/contact.php';
 require __DIR__ . '/settings.php';
-require __DIR__ . '/contact.php';
