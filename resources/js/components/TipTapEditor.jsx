@@ -32,7 +32,21 @@ export default function TipTapEditor({ value = '', onChange, placeholder, classN
         }
     }, [value, editor]);
 
-    if (!editor) return null;
+    if (!editor) {
+        return (
+            <div
+                className={cn(
+                    'rounded-md border border-input bg-muted/30 text-sm',
+                    className
+                )}
+                style={{ minHeight }}
+            >
+                <div className="text-muted-foreground px-3 py-6 text-center text-sm">
+                    Loading editor…
+                </div>
+            </div>
+        );
+    }
 
     return (
         <div

@@ -10,9 +10,9 @@ import {
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import TipTapEditor from '@/components/TipTapEditor';
 import { slugFromTitle, debounce } from '@/components/helpers/helpers';
+import { cn } from '@/lib/utils';
 
 const LOCALES = [
     { key: 'ar', label: 'AR' },
@@ -110,24 +110,37 @@ export default function EditBlogModal({ blog, open, onOpenChange }) {
                 <DialogHeader>
                     <DialogTitle>Edit Blog</DialogTitle>
                 </DialogHeader>
-                <form onSubmit={handleSubmit} className="space-y-4">
-                    <Tabs value={activeTab} onValueChange={setActiveTab}>
-                        <TabsList className="grid w-full grid-cols-3">
-                            {LOCALES.map(({ key, label }) => (
-                                <TabsTrigger
-                                    key={key}
-                                    value={key}
-                                    className={hasTabError(key) ? 'text-destructive data-[state=active]:text-destructive' : ''}
-                                >
-                                    {label}
-                                    {hasTabError(key) && (
-                                        <span className="ml-1 size-2 rounded-full bg-destructive" aria-hidden />
-                                    )}
-                                </TabsTrigger>
-                            ))}
-                        </TabsList>
+                <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+                    <div className="inline-flex h-9 items-center justify-center rounded-lg bg-muted p-1 text-muted-foreground">
+                        {LOCALES.map(({ key, label }) => (
+                            <button
+                                key={key}
+                                type="button"
+                                onClick={() => setActiveTab(key)}
+                                className={cn(
+                                    'inline-flex items-center justify-center rounded-md px-3 py-1 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
+                                    activeTab === key
+                                        ? 'bg-background text-foreground shadow'
+                                        : 'hover:text-foreground',
+                                    hasTabError(key) && 'text-destructive'
+                                )}
+                            >
+                                {label}
+                                {hasTabError(key) && (
+                                    <span className="ml-1 size-2 rounded-full bg-destructive" aria-hidden />
+                                )}
+                            </button>
+                        ))}
+                    </div>
+
+                    <div className="min-h-[280px] space-y-4">
                         {LOCALES.map((locale) => (
-                            <TabsContent key={locale} value={locale} className="space-y-4 mt-4">
+                            <div
+                                key={locale}
+                                className={cn('space-y-4', activeTab !== locale && 'hidden')}
+                                role="tabpanel"
+                                aria-hidden={activeTab !== locale}
+                            >
                                 <div>
                                     <Label htmlFor={`edit-title-${locale}`}>Title</Label>
                                     <Input
@@ -168,9 +181,9 @@ export default function EditBlogModal({ blog, open, onOpenChange }) {
                                         <p className="mt-1 text-sm text-destructive">{errors[`body.${locale}`]}</p>
                                     )}
                                 </div>
-                            </TabsContent>
+                            </div>
                         ))}
-                    </Tabs>
+                    </div>
                     <DialogFooter>
                         <Button type="button" variant="outline" onClick={() => onOpenChange(false)}>
                             Cancel
