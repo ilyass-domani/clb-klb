@@ -68,7 +68,7 @@ class BlogController extends Controller
     public function index(Request $request): Response
     {
         $categorySlug = $request->query('category', 'tout');
-        $perPage = 9;
+        $perPage = 6;
         $all = collect(self::mockPosts());
 
         $filtered = $categorySlug === 'tout'
