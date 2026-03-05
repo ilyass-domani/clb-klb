@@ -24,7 +24,7 @@ class EventController extends Controller
      */
     public function create()
     {
-        //
+        return inertia('admin/event/create');
     }
 
     /**
@@ -32,7 +32,20 @@ class EventController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'title' => 'required|string|max:255',
+            'description' => 'required|string',
+            'date' => 'required|date',
+            'time' => 'required',
+            'categorie' => 'required|string|max:255',
+            'price' => 'required|integer|min:0',
+            'image' => 'required|string|max:255',
+            'location' => 'required|string|max:255',
+        ]);
+
+        Event::create($validated);
+
+        return redirect()->route('admin.events.index')->with('success', 'Event created successfully.');
     }
 
     /**
@@ -40,7 +53,6 @@ class EventController extends Controller
      */
     public function show(Event $event)
     {
-        //
         return inertia('events/[id]', [
             "event" => $event
         ]);
@@ -51,7 +63,9 @@ class EventController extends Controller
      */
     public function edit(Event $event)
     {
-        //
+        return inertia('admin/event/edit', [
+            'event' => $event,
+        ]);
     }
 
     /**
@@ -59,7 +73,20 @@ class EventController extends Controller
      */
     public function update(Request $request, Event $event)
     {
-        //
+        $validated = $request->validate([
+            'title' => 'required|string|max:255',
+            'description' => 'required|string',
+            'date' => 'required|date',
+            'time' => 'required',
+            'categorie' => 'required|string|max:255',
+            'price' => 'required|integer|min:0',
+            'image' => 'required|string|max:255',
+            'location' => 'required|string|max:255',
+        ]);
+
+        $event->update($validated);
+
+        return redirect()->route('admin.events.index')->with('success', 'Event updated successfully.');
     }
 
     /**
@@ -67,6 +94,20 @@ class EventController extends Controller
      */
     public function destroy(Event $event)
     {
-        //
+        $event->delete();
+
+        return redirect()->route('admin.events.index')->with('success', 'Event deleted successfully.');
+    }
+
+    /**
+     * Admin listing of events.
+     */
+    public function adminIndex()
+    {
+        $events = Event::latest()->get();
+
+        return inertia('admin/event/index', [
+            'events' => $events,
+        ]);
     }
 }
