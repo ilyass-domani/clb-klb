@@ -2,28 +2,18 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Hash;
 
-class DatabaseSeeder extends Seeder
+class EventSeeder extends Seeder
 {
     /**
-     * Seed the application's database.
+     * Run the database seeds.
      */
     public function run(): void
     {
-        // User::factory(10)->create();
-
-        // User::factory()->create([
-        //     'name' => env('SEEDER_USER_NAME'),
-        //     'email' => env('SEEDER_USER_EMAIL'),
-        //     'password' => env('SEEDER_USER_PASSWORD'),
-        //     'role' => env('SEEDER_USER_ROLE'),
-        // ]);
-
+        //
 
          $events = [
             [
@@ -65,5 +55,6 @@ class DatabaseSeeder extends Seeder
         ];
 
         DB::table('events')->insert($events);
+
     }
 }
