@@ -18,7 +18,7 @@ import type { NavItem } from '@/types';
 const mainNavItems: NavItem[] = [
     {
         title: 'Dashboard',
-        href: '/dashboard',
+        href: '/admin/dashboard',
         icon: LayoutGrid,
     },
     {
@@ -30,6 +30,12 @@ const mainNavItems: NavItem[] = [
         title: 'Participants',
         href: '/admin/participants',
         icon: Users,
+       
+    },
+    {
+        title: 'blogs',
+        href: '/admin/blogs',
+        icon: BookOpen,
     },
 ];
 

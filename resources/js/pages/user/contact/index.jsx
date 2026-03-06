@@ -5,7 +5,9 @@ import TransText from '@/components/TransText';
 import ContactHeroSection from './Partials/ContactHeroSection';
 import ContactFormSection from './Partials/ContactFormSection';
 
-function ContactIndex() {
+function ContactIndex({ contact }) {
+    console.log(contact);
+    
     return (
         <>
             <AppLayout>
