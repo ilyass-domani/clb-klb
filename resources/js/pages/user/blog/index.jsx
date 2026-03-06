@@ -2,7 +2,6 @@ import { Head } from '@inertiajs/react';
 import AppLayout from '@/layouts/app-layout';
 import PageHero from '@/components/PageHero';
 import TransText from '@/components/TransText';
-import CategoryFilters from './Partials/CategoryFilters';
 import BlogCard from './Partials/BlogCard';
 import Pagination from './Partials/Pagination';
 
@@ -10,7 +9,7 @@ import Pagination from './Partials/Pagination';
  * Blog listing page. Data (blogs, categories, pagination) is provided by
  * App\Http\Controllers\User\BlogController::index (published blogs, current locale).
  */
-export default function BlogIndex({ blogs = [], categories = [], currentCategory = 'tout', pagination }) {
+export default function BlogIndex({ blogs = [], pagination }) {
     return (
         <>
             <Head title="Blog - Cercle des Lauréats de Belgique" />
@@ -31,7 +30,6 @@ export default function BlogIndex({ blogs = [], categories = [], currentCategory
                 ar="هنا نستكشف النجاحات الاستثنائية التي تشكل فخر أمتنا. سواء كنت عضواً في CLB أو طالباً للتميز أو ببساطة فضولياً، هذا المدونة هو جواز سفرك لاكتشاف القصص الملهمة والإنجازات الاستثنائية التي تشكل التميز البلجيكي في المغرب."
                 nl="Hier verkennen we de uitzonderlijke successen die de trots van onze natie vormen. Of u nu lid bent van de CLB, aspirant-laureaat of gewoon nieuwsgierig, deze blog is uw paspoort om de inspirerende verhalen en buitengewone prestaties te ontdekken die het Belgische excellentie in Marokko vormgeven."
             />
-            <CategoryFilters categories={categories} currentCategory={currentCategory} />
             <div className="mx-auto max-w-6xl px-4 pb-8">
                 {blogs.length === 0 ? (
                     <p className="py-12 text-center text-muted-foreground">

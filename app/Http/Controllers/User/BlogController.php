@@ -10,14 +10,6 @@ use Inertia\Response;
 
 class BlogController extends Controller
 {
-    private const CATEGORIES = [
-        ['slug' => 'tout', 'label' => 'Tout'],
-        ['slug' => 'evenements', 'label' => 'Événements'],
-        ['slug' => 'cooperation', 'label' => 'Coopération'],
-        ['slug' => 'portraits', 'label' => 'Portraits'],
-        ['slug' => 'culture', 'label' => 'Culture'],
-    ];
-
     private function locale(): string
     {
         $locale = app()->getLocale();
@@ -34,22 +26,10 @@ class BlogController extends Controller
             'title' => $blog->getTranslation('title', $locale),
             'excerpt' => $blog->getTranslation('description', $locale),
             'body' => $blog->getTranslation('body', $locale),
-            'category' => $this->categoryLabel($blog->category_slug),
-            'category_slug' => $blog->category_slug,
             'image_url' => $imageUrl,
             'published_at' => $blog->published_at?->translatedFormat('j F Y'),
             'url' => '/blogs/' . $blog->id,
         ];
-    }
-
-    private function categoryLabel(string $slug): string
-    {
-        foreach (self::CATEGORIES as $c) {
-            if ($c['slug'] === $slug) {
-                return $c['label'];
-            }
-        }
-        return $slug;
     }
 
     /**
@@ -57,43 +37,34 @@ class BlogController extends Controller
      */
     public function index(Request $request): Response
     {
-        $categorySlug = $request->query('category', 'tout');
         $perPage = 6;
 
-        $query = Blog::query()
+        $paginated = Blog::query()
             ->whereNotNull('published_at')
-            ->where('published_at', '<=', now());
-
-        if ($categorySlug !== 'tout') {
-            $query->where('category_slug', $categorySlug);
-        }
-
-        $paginated = $query->orderByDesc('published_at')->paginate($perPage);
+            ->where('published_at', '<=', now())
+            ->orderByDesc('published_at')
+            ->paginate($perPage);
 
         $blogs = $paginated->getCollection()->map(fn (Blog $blog) => $this->blogToArray($blog))->values()->all();
 
         $lastPage = $paginated->lastPage();
         $currentPage = $paginated->currentPage();
         $basePath = $request->url();
-        $queryParams = $request->query();
         $links = [];
         for ($i = 1; $i <= $lastPage; $i++) {
-            $queryParams['page'] = $i;
             $links[] = [
-                'url' => $basePath . '?' . http_build_query($queryParams),
+                'url' => $basePath . ($i === 1 ? '' : '?page=' . $i),
                 'label' => (string) $i,
                 'active' => $i === $currentPage,
             ];
         }
 
         $nextUrl = $currentPage < $lastPage
-            ? $basePath . '?' . http_build_query(array_merge($request->query(), ['page' => $currentPage + 1]))
+            ? $basePath . '?page=' . ($currentPage + 1)
             : null;
 
         return Inertia::render('user/blog/index', [
             'blogs' => $blogs,
-            'categories' => self::CATEGORIES,
-            'currentCategory' => $categorySlug,
             'pagination' => [
                 'current_page' => $currentPage,
                 'last_page' => $lastPage,

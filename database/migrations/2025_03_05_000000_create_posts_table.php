@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
-            $table->string('category_slug', 64)->default('evenements');
             $table->string('image')->nullable();
             $table->json('title');       // { fr, ar, nl }
             $table->json('slug')->nullable(); // { fr, ar, nl } URL slug per locale

@@ -71,7 +71,6 @@ class BlogController extends Controller
                 'nl' => $validated['body']['nl'] ?? '',
             ],
             'description' => ['ar' => '', 'fr' => '', 'nl' => ''],
-            'category_slug' => 'evenements',
             'published_at' => now(),
         ]);
 

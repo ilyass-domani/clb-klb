@@ -2,17 +2,17 @@ import { Link } from '@inertiajs/react';
 import TransText from '@/components/TransText';
 
 /**
- * Renders a single blog post: back link, category, date, title, image, excerpt, and full body (TipTap HTML in prose).
+ * Renders a single blog post: back link, date, title, image, excerpt, and full body (TipTap HTML in prose).
  * Uses current locale translation (passed from server); static labels use TransText.
  *
- * @param {{ blog: { title: string, excerpt?: string, body?: string, category?: string, image_url?: string, published_at?: string, url?: string } }} props
+ * @param {{ blog: { title: string, excerpt?: string, body?: string, image_url?: string, published_at?: string, url?: string } }} props
  */
 export default function BlogDetail({ blog }) {
     if (!blog) {
         return null;
     }
 
-    const { title, excerpt, body, category, image_url, published_at } = blog;
+    const { title, excerpt, body, image_url, published_at } = blog;
 
     return (
         <article className="mx-auto max-w-3xl px-4 py-10 sm:py-14">
@@ -23,11 +23,6 @@ export default function BlogDetail({ blog }) {
                 <TransText fr="← Retour au blog" ar="← العودة إلى المدونة" nl="← Terug naar blog" />
             </Link>
             <div className="mt-6">
-                {category && (
-                    <span className="rounded bg-alpha/10 px-2 py-1 text-xs font-semibold uppercase tracking-wide text-alpha">
-                        {category}
-                    </span>
-                )}
                 {published_at && (
                     <p className="mt-3 text-sm text-muted-foreground">
                         {published_at}
