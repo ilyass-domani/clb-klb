@@ -28,10 +28,8 @@ export default function Footer() {
                 <div className="flex flex-col gap-8 md:flex-row md:items-start md:justify-between">
                     <div className="max-w-md">
                         <Link href="/" className="mb-4 inline-flex items-center gap-2">
-                            <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded bg-alpha">
-                                <span className="text-xs font-bold text-cl-white">CLB KLP</span>
-                            </div>
-                            <span className="font-semibold text-cl-white">CLB KLP</span>
+                            <img src="/images/logo.webp" alt="CLB KLB" className="h-10 w-10 object-contain" />
+                            <span className="font-semibold text-cl-white">CLB KLB</span>
                         </Link>
                         <p className="text-sm text-cl-white/90">
                             Le cercle des lauréats de Belgique, association à but non lucratif régie par la loi du 1er juillet 1901.
@@ -53,7 +51,7 @@ export default function Footer() {
             </div>
             <div className="border-t border-white/10">
                 <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-2 px-4 py-4 text-sm text-cl-white/80 sm:flex-row lg:px-8">
-                    <span>© 2023 CLB KLP. Tous droits réservés.</span>
+                    <span>© 2023 CLB KLB. Tous droits réservés.</span>
                     <div className="flex items-center gap-4">
                         <span>Téléphone: +212 662 50 1470</span>
                         <a href="mailto:contact@clbklp.ma" className="hover:underline">contact@clbklp.ma</a>

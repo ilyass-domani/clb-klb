@@ -183,24 +183,35 @@ function EventCard({ event }) {
 }
 
 export default function EventsGrid({ events }) {
-    // console.log(events)
+    const list = events ?? [];
+
     return (
         <section className="bg-background pt-2 pb-16 lg:pb-24">
             <div className="mx-auto max-w-7xl px-4 lg:px-8">
-                <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-                    {events.map((event, index) => (
-                        <EventCard key={`${event.id}-${index}`} event={event} />
-                    ))}
-                </div>
+                {list.length === 0 ? (
+                    <div className="flex flex-col items-center justify-center py-16 text-center">
+                        <p className="text-cl-beta">
+                            <TransText fr="Aucun événement ne correspond à vos filtres." ar="لا يوجد حدث يطابق الفلاتر." nl="Geen evenementen die overeenkomen met uw filters." />
+                        </p>
+                    </div>
+                ) : (
+                    <>
+                        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+                            {list.map((event, index) => (
+                                <EventCard key={`${event.id}-${index}`} event={event} />
+                            ))}
+                        </div>
 
-                <div className="mt-14 flex justify-center">
-                    <button
-                        type="button"
-                        className="inline-flex items-center justify-center rounded-full border border-alpha/30 bg-cl-white px-10 py-3 text-sm font-semibold text-alpha transition hover:bg-alpha hover:text-cl-white"
-                    >
-                        <TransText fr="Charger plus d'événements" ar="تحميل المزيد من الفعاليات" nl="Meer evenementen laden" />
-                    </button>
-                </div>
+                        <div className="mt-14 flex justify-center">
+                            <button
+                                type="button"
+                                className="inline-flex items-center justify-center rounded-full border border-alpha/30 bg-cl-white px-10 py-3 text-sm font-semibold text-alpha transition hover:bg-alpha hover:text-cl-white"
+                            >
+                                <TransText fr="Charger plus d'événements" ar="تحميل المزيد من الفعاليات" nl="Meer evenementen laden" />
+                            </button>
+                        </div>
+                    </>
+                )}
             </div>
         </section>
     );

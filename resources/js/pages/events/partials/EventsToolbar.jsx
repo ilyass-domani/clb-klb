@@ -1,18 +1,18 @@
 import { useTrans } from '@/hooks/use-trans';
 
 const statusTabs = [
-    { id: 'upcoming', label: { fr: 'À venir', ar: 'القادمة', nl: 'Aankomend' }, active: true },
-    { id: 'past', label: { fr: 'Passés', ar: 'الماضية', nl: 'Afgelopen' }, active: false },
+    { id: 'upcoming', label: { fr: 'À venir', ar: 'القادمة', nl: 'Aankomend' } },
+    { id: 'past', label: { fr: 'Passés', ar: 'الماضية', nl: 'Afgelopen' } },
 ];
 
 const typeFilters = [
-    { id: 'all', label: { fr: 'Tous', ar: 'الكل', nl: 'Alle' }, active: true },
-    { id: 'conference', label: { fr: 'Conférence', ar: 'مؤتمر', nl: 'Conferentie' }, active: false },
-    { id: 'gala', label: { fr: 'Gala', ar: 'حفل', nl: 'Gala' }, active: false },
-    { id: 'networking', label: { fr: 'Networking', ar: 'تواصل', nl: 'Networking' }, active: false },
+    { id: 'all', label: { fr: 'Tous', ar: 'الكل', nl: 'Alle' } },
+    { id: 'conference', label: { fr: 'Conférence', ar: 'مؤتمر', nl: 'Conferentie' } },
+    { id: 'gala', label: { fr: 'Gala', ar: 'حفل', nl: 'Gala' } },
+    { id: 'networking', label: { fr: 'Networking', ar: 'تواصل', nl: 'Networking' } },
 ];
 
-export default function EventsToolbar() {
+export default function EventsToolbar({ statusFilter, onStatusChange, categoryFilter, onCategoryChange }) {
     const { t } = useTrans();
     return (
         <section className="bg-background">
@@ -22,8 +22,9 @@ export default function EventsToolbar() {
                         <button
                             key={tab.id}
                             type="button"
+                            onClick={() => onStatusChange?.(tab.id)}
                             className={`pb-1 text-sm font-medium transition ${
-                                tab.active
+                                statusFilter === tab.id
                                     ? 'border-b-2 border-cl-black text-cl-black'
                                     : 'text-cl-beta hover:text-cl-black'
                             }`}
@@ -38,8 +39,9 @@ export default function EventsToolbar() {
                         <button
                             key={filter.id}
                             type="button"
+                            onClick={() => onCategoryChange?.(filter.id)}
                             className={`rounded-full px-5 py-2 text-sm font-medium transition ${
-                                filter.active
+                                categoryFilter === filter.id
                                     ? 'bg-alpha text-cl-white'
                                     : 'border border-border bg-cl-white text-cl-black hover:border-alpha/40'
                             }`}
