@@ -1,4 +1,4 @@
-import { Head, usePage } from '@inertiajs/react';
+import { Head } from '@inertiajs/react';
 import AppLayout from '@/layouts/app-layout';
 import PageHero from '@/components/PageHero';
 import TransText from '@/components/TransText';
@@ -6,9 +6,11 @@ import CategoryFilters from './Partials/CategoryFilters';
 import BlogCard from './Partials/BlogCard';
 import Pagination from './Partials/Pagination';
 
-export default function BlogIndex() {
-    const { blogs = [], categories = [], currentCategory = 'tout', pagination } = usePage().props;
-
+/**
+ * Blog listing page. Data (blogs, categories, pagination) is provided by
+ * App\Http\Controllers\User\BlogController::index (published blogs, current locale).
+ */
+export default function BlogIndex({ blogs = [], categories = [], currentCategory = 'tout', pagination }) {
     return (
         <>
             <Head title="Blog - Cercle des Lauréats de Belgique" />
@@ -31,12 +33,24 @@ export default function BlogIndex() {
             />
             <CategoryFilters categories={categories} currentCategory={currentCategory} />
             <div className="mx-auto max-w-6xl px-4 pb-8">
-                <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                    {blogs.map((blog) => (
-                        <BlogCard key={blog.id} blog={blog} />
-                    ))}
-                </div>
-                <Pagination pagination={pagination} />
+                {blogs.length === 0 ? (
+                    <p className="py-12 text-center text-muted-foreground">
+                        <TransText
+                            fr="Aucun article pour le moment."
+                            ar="لا توجد مقالات حالياً."
+                            nl="Nog geen artikelen."
+                        />
+                    </p>
+                ) : (
+                    <>
+                        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                            {blogs.map((blog) => (
+                                <BlogCard key={blog.id} blog={blog} />
+                            ))}
+                        </div>
+                        <Pagination pagination={pagination} />
+                    </>
+                )}
             </div>
         </>
     );

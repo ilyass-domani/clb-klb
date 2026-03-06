@@ -72,6 +72,7 @@ class BlogController extends Controller
             ],
             'description' => ['ar' => '', 'fr' => '', 'nl' => ''],
             'category_slug' => 'evenements',
+            'published_at' => now(),
         ]);
 
         return redirect()->route('admin.blogs.index')->with('success', 'Blog created.');
