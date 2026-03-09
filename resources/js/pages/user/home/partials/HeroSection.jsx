@@ -3,46 +3,66 @@ import TransText from '@/components/TransText';
 
 export default function HeroSection() {
     return (
-        <section className="relative flex min-h-[88vh] items-center justify-center overflow-hidden bg-foreground px-4 pt-24 pb-20">
+        <section className="relative flex min-h-[62.5vh] items-center justify-center bg-cl-black/75 px-4 py-24">
             <div
-                className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-25"
+                className="absolute inset-0 bg-cover bg-center bg-no-repeat"
                 style={{
-                    backgroundImage: 'url(https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=1920&q=80)',
+                    backgroundImage: `url(/assets/hero-bg.webp)`,
                 }}
             />
-            <div className="absolute inset-0 bg-gradient-to-b from-foreground/90 via-foreground/80 to-foreground" />
-            <div className="relative z-10 mx-auto max-w-3xl text-center">
-                <span className="inline-block rounded-full bg-cl-yellow/20 px-4 py-1.5 text-xs font-medium uppercase tracking-widest text-cl-yellow">
-                    <TransText fr="Cercle d'excellence" ar="دائرة الامتياز" nl="Kring van uitmuntendheid" as="span" />
-                </span>
-                <h1 className="mt-8 text-4xl font-semibold leading-[1.15] tracking-tight text-white sm:text-5xl lg:text-6xl">
+            <div
+                className="absolute inset-0"
+                style={{
+                    background:
+                        'linear-gradient(to right, rgba(32, 18, 19, 0.625) 0%, rgba(32, 18, 19, 0.75) 50%, rgba(32, 18, 19, 0.625) 100%)',
+                }}
+            />
+            <div className="relative z-10 mx-auto max-w-4xl text-center">
+                <h1 className="mb-6 text-3xl leading-tight font-bold text-cl-white uppercase sm:text-4xl lg:text-5xl xl:text-6xl">
                     <TransText
-                        fr="Le cercle des lauréats de Belgique"
-                        ar="دائرة خريجي بلجيكا"
-                        nl="De kring van Belgische laureaten"
+                        fr="Le réseau des diplômés"
+                        ar="شبكة الخريجين"
+                        nl="Het netwerk van afgestudeerden"
                         as="span"
                     />
                 </h1>
-                <p className="mx-auto mt-8 max-w-xl text-lg leading-relaxed text-white/80">
+                <h1 className="mb-6 text-4xl font-extrabold leading-[1.1] tracking-tight text-cl-white sm:text-5xl lg:text-6xl xl:text-7xl">
                     <TransText
-                        fr="Le club d'excellence des diplômés de l'enseignement belge du Maroc. Connexion des talents, créateur des opportunités, d'un coup d'oeil le monde."
-                        ar="نادي امتياز خريجي التعليم البلجيكي في المغرب. ربط المواهب، خلق الفرص، والعالم بنظرة واحدة."
-                        nl="De club van uitmuntende afgestudeerden van het Belgisch onderwijs in Marokko. Talenten verbinden, kansen creëren, de wereld in één oogopslag."
+                        fr="Le Cercle des Lauréats de Belgique"
+                        ar="دائرة خريجي بلجيكا"
+                        nl="De Kring van Belgische Laureaten"
+                        as="span"
+                    />
+                </h1>
+                <div className="mx-auto mb-8 h-1 w-20 rounded-full bg-alpha" />
+                <p className="mx-auto mb-12 max-w-2xl text-base leading-relaxed text-cl-white/95 sm:text-lg lg:text-xl">
+                    <TransText
+                        fr="Le réseau des diplômés de l'enseignement belge au Maroc. Nous fédérons les talents, créons des opportunités et renforçons les liens entre la Belgique et le Maroc."
+                        ar="شبكة خريجي التعليم البلجيكي في المغرب. نوحد المواهب ونخلق الفرص ونوطد العلاقات بين بلجيكا والمغرب."
+                        nl="Het netwerk van afgestudeerden van het Belgisch onderwijs in Marokko. We verbinden talenten, creëren kansen en versterken de banden tussen België en Marokko."
                         as="span"
                     />
                 </p>
                 <div className="mt-12 flex flex-wrap items-center justify-center gap-4">
                     <Link
                         href="/a-propos"
-                        className="inline-flex items-center rounded-lg bg-primary px-7 py-3 text-sm font-medium text-primary-foreground transition hover:opacity-95"
+                        className="rounded-full bg-alpha px-12 py-4 text-sm font-semibold text-cl-white transition hover:bg-alpha/85"
                     >
-                        <TransText fr="En savoir plus" ar="اعرف المزيد" nl="Meer weten" as="span" />
+                        <TransText
+                            fr="EN SAVOIR PLUS"
+                            ar="اعرف المزيد"
+                            nl="MEER WETEN"
+                        />
                     </Link>
                     <Link
-                        href="/a-propos"
-                        className="inline-flex items-center rounded-lg bg-cl-yellow px-7 py-3 text-sm font-medium text-cl-black transition hover:bg-cl-yellow/90"
+                        href="/contact"
+                        className="rounded-full border border-cl-white px-12 py-4 text-sm font-semibold text-cl-white uppercase transition hover:bg-cl-white/5"
                     >
-                        <TransText fr="Adhérer au club" ar="انضم إلى النادي" nl="Lid worden van de club" as="span" />
+                        <TransText
+                            fr="contactez-nous"
+                            ar="اتصل بنا"
+                            nl="CONTACTEER ONS"
+                        />
                     </Link>
                 </div>
             </div>

@@ -6,12 +6,16 @@ import { Link } from '@inertiajs/react';
  *
  * @param {{ categories: Array<{ slug: string, label: string }>, currentCategory: string }} props
  */
-export default function CategoryFilters({ categories = [], currentCategory = 'tout' }) {
+export default function CategoryFilters({
+    categories = [],
+    currentCategory = 'tout',
+}) {
     return (
         <div className="flex flex-wrap justify-center gap-2 px-4 pb-8 sm:gap-3">
             {categories.map(({ slug, label }) => {
                 const isActive = currentCategory === slug;
-                const url = slug === 'tout' ? '/blogs' : `/blogs?category=${slug}`;
+                const url =
+                    slug === 'tout' ? '/blogs' : `/blogs?category=${slug}`;
 
                 return (
                     <Link

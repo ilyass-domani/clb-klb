@@ -10,7 +10,10 @@ export function slugFromTitle(title, locale) {
 
     if (locale === 'ar') {
         // Preserve Arabic letters (and numbers), strip everything else, collapse spaces to single hyphen
-        const arabicAndNumbers = trimmed.replace(/[^\p{Script=Arabic}\p{N}\s]/gu, ' ');
+        const arabicAndNumbers = trimmed.replace(
+            /[^\p{Script=Arabic}\p{N}\s]/gu,
+            ' ',
+        );
         return arabicAndNumbers
             .replace(/\s+/g, '-')
             .replace(/^-|-$/g, '')

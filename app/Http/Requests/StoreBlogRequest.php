@@ -17,6 +17,7 @@ class StoreBlogRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'image' => ['nullable', 'image', 'max:2048'],
             'title.ar' => ['required', 'string', 'max:255'],
             'title.fr' => ['required', 'string', 'max:255'],
             'title.nl' => ['required', 'string', 'max:255'],

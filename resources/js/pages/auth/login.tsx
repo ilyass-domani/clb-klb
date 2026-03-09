@@ -37,7 +37,8 @@ export default function Login({
 
                         <div className="rounded-xl border border-border bg-muted/50 p-6 shadow-sm lg:p-8">
                             <p className="mb-6 text-sm text-muted-foreground">
-                                Entrez votre adresse e-mail et votre mot de passe pour accéder à votre compte.
+                                Entrez votre adresse e-mail et votre mot de
+                                passe pour accéder à votre compte.
                             </p>
 
                             <Form
@@ -62,9 +63,11 @@ export default function Login({
                                                 autoFocus
                                                 autoComplete="email"
                                                 placeholder="email@exemple.com"
-                                                className="w-full rounded-lg border border-input bg-background px-3 py-2 text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring"
+                                                className="w-full rounded-lg border border-input bg-background px-3 py-2 text-foreground placeholder:text-muted-foreground focus:ring-2 focus:ring-ring focus:outline-none"
                                             />
-                                            <InputError message={errors.email} />
+                                            <InputError
+                                                message={errors.email}
+                                            />
                                         </div>
 
                                         <div>
@@ -91,9 +94,11 @@ export default function Login({
                                                 required
                                                 autoComplete="current-password"
                                                 placeholder="••••••••"
-                                                className="mt-1 w-full rounded-lg border border-input bg-background px-3 py-2 text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring"
+                                                className="mt-1 w-full rounded-lg border border-input bg-background px-3 py-2 text-foreground placeholder:text-muted-foreground focus:ring-2 focus:ring-ring focus:outline-none"
                                             />
-                                            <InputError message={errors.password} />
+                                            <InputError
+                                                message={errors.password}
+                                            />
                                         </div>
 
                                         <div className="flex items-center gap-3">
@@ -114,9 +119,11 @@ export default function Login({
                                         <button
                                             type="submit"
                                             disabled={processing}
-                                            className="mt-2 w-full rounded-lg bg-alpha px-4 py-3 text-sm font-medium uppercase text-cl-white transition hover:opacity-95 disabled:opacity-70"
+                                            className="mt-2 w-full rounded-lg bg-alpha px-4 py-3 text-sm font-medium text-cl-white uppercase transition hover:opacity-95 disabled:opacity-70"
                                         >
-                                            {processing ? 'Connexion...' : 'Se connecter'}
+                                            {processing
+                                                ? 'Connexion...'
+                                                : 'Se connecter'}
                                         </button>
                                     </>
                                 )}
@@ -125,7 +132,10 @@ export default function Login({
                             {canRegister && (
                                 <p className="mt-6 border-t border-border pt-6 text-center text-sm text-muted-foreground">
                                     Pas encore de compte ?{' '}
-                                    <Link href={register()} className="font-medium text-alpha hover:underline">
+                                    <Link
+                                        href={register()}
+                                        className="font-medium text-alpha hover:underline"
+                                    >
                                         S&apos;inscrire
                                     </Link>
                                 </p>

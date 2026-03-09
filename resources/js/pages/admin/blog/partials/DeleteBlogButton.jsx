@@ -31,7 +31,8 @@ export default function DeleteBlogButton({ blog, onDeleted }) {
                 <AlertDialogHeader>
                     <AlertDialogTitle>Delete blog?</AlertDialogTitle>
                     <AlertDialogDescription>
-                        This will permanently delete this blog. This action cannot be undone.
+                        This will permanently delete this blog. This action
+                        cannot be undone.
                     </AlertDialogDescription>
                 </AlertDialogHeader>
                 <AlertDialogFooter>

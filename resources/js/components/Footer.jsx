@@ -1,74 +1,129 @@
 import { Link } from '@inertiajs/react';
 
 const socialLinks = [
-    { name: 'Facebook', href: '#', icon: 'facebook' },
-    { name: 'Instagram', href: '#', icon: 'instagram' },
-    { name: 'YouTube', href: '#', icon: 'youtube' },
-    { name: 'LinkedIn', href: '#', icon: 'linkedin' },
-];
+    {
+        name: 'Facebook',
+        href: 'https://www.facebook.com/clb.klb',
+        Icon: ({ className }) => (
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 320 512"
+                className={className}
+            >
+                <path d="M80 299.3l0 212.7 116 0 0-212.7 86.5 0 18-97.8-104.5 0 0-34.6c0-51.7 20.3-71.5 72.7-71.5 16.3 0 29.4 .4 37 1.2l0-88.7C291.4 4 256.4 0 236.2 0 129.3 0 80 50.5 80 159.4l0 42.1-66 0 0 97.8 66 0z" />
+            </svg>
+        ),
+    },
+    {
+        name: 'Instagram',
+        href: 'https://www.instagram.com/clb_klb',
 
-function SocialIcon({ name }) {
-    const paths = {
-        facebook: 'M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z',
-        instagram: 'M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z',
-        youtube: 'M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z',
-        linkedin: 'M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z',
-    };
-    return (
-        <svg className="h-5 w-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
-            <path d={paths[name] || ''} />
-        </svg>
-    );
-}
+        Icon: ({ className }) => (
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 448 512"
+                className={className}
+            >
+                <path d="M224.3 141a115 115 0 1 0 -.6 230 115 115 0 1 0 .6-230zm-.6 40.4a74.6 74.6 0 1 1 .6 149.2 74.6 74.6 0 1 1 -.6-149.2zm93.4-45.1a26.8 26.8 0 1 1 53.6 0 26.8 26.8 0 1 1 -53.6 0zm129.7 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM399 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z" />
+            </svg>
+        ),
+    },
+    {
+        name: 'YouTube',
+        href: 'https://www.youtube.com/@cercleclb-klb4504',
+
+        Icon: ({ className }) => (
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 576 512"
+                className={className}
+            >
+                <path d="M549.7 124.1C543.5 100.4 524.9 81.8 501.4 75.5 458.9 64 288.1 64 288.1 64S117.3 64 74.7 75.5C51.2 81.8 32.7 100.4 26.4 124.1 15 167 15 256.4 15 256.4s0 89.4 11.4 132.3c6.3 23.6 24.8 41.5 48.3 47.8 42.6 11.5 213.4 11.5 213.4 11.5s170.8 0 213.4-11.5c23.5-6.3 42-24.2 48.3-47.8 11.4-42.9 11.4-132.3 11.4-132.3s0-89.4-11.4-132.3zM232.2 337.6l0-162.4 142.7 81.2-142.7 81.2z" />
+            </svg>
+        ),
+    },
+    {
+        name: 'LinkedIn',
+        href: 'https://www.linkedin.com/company/clb-klb',
+
+        Icon: ({ className }) => (
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 448 512"
+                className={className}
+            >
+                <path d="M100.3 448l-92.9 0 0-299.1 92.9 0 0 299.1zM53.8 108.1C24.1 108.1 0 83.5 0 53.8 0 39.5 5.7 25.9 15.8 15.8s23.8-15.8 38-15.8 27.9 5.7 38 15.8 15.8 23.8 15.8 38c0 29.7-24.1 54.3-53.8 54.3zM447.9 448l-92.7 0 0-145.6c0-34.7-.7-79.2-48.3-79.2-48.3 0-55.7 37.7-55.7 76.7l0 148.1-92.8 0 0-299.1 89.1 0 0 40.8 1.3 0c12.4-23.5 42.7-48.3 87.9-48.3 94 0 111.3 61.9 111.3 142.3l0 164.3-.1 0z" />
+            </svg>
+        ),
+    },
+    {
+        name: 'X',
+        href: 'https://twitter.com/clb_klb',
+
+        Icon: ({ className }) => (
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 448 512"
+                className={className}
+            >
+                <path d="M357.2 48L427.8 48 273.6 224.2 455 464 313 464 201.7 318.6 74.5 464 3.8 464 168.7 275.5-5.2 48 140.4 48 240.9 180.9 357.2 48zM332.4 421.8l39.1 0-252.4-333.8-42 0 255.3 333.8z" />
+            </svg>
+        ),
+    },
+];
 
 export default function Footer() {
     return (
-        <footer className="border-t border-border bg-foreground text-background">
-            <div className="mx-auto max-w-6xl px-4 py-14 lg:px-6 lg:py-16">
-                <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
-                    <div className="lg:col-span-2">
-                        <Link href="/" className="inline-flex items-center gap-2.5 transition-opacity hover:opacity-90">
-                            <img src="/images/logo.webp" alt="CLB KLB" className="h-10 w-10 object-contain" />
-                            <span className="text-lg font-semibold tracking-tight">CLB KLB</span>
+        <footer className="bg-cl-black text-cl-white">
+            <div className="mx-auto max-w-7xl px-4 py-12 lg:px-8">
+                <div className="flex flex-col gap-8 md:flex-row md:items-start md:justify-between">
+                    <div className="max-w-md">
+                        <Link
+                            href="/"
+                            className="mb-4 inline-flex items-center gap-2"
+                        >
+                            <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded bg-alpha">
+                                <span className="text-xs font-bold text-cl-white">
+                                    CLB KLP
+                                </span>
+                            </div>
+                            <span className="font-semibold text-cl-white">
+                                CLB KLP
+                            </span>
                         </Link>
-                        <p className="mt-4 max-w-sm text-sm leading-relaxed text-white/70">
-                            Le cercle des lauréats de Belgique, association à but non lucratif régie par la loi du 1er juillet 1901.
+                        <p className="text-sm text-cl-white/90">
+                            Le cercle des lauréats de Belgique, association à
+                            but non lucratif régie par la loi du 1er juillet
+                            1901.
                         </p>
                     </div>
-                    <div>
-                        <h3 className="text-xs font-semibold uppercase tracking-wider text-white/50">Contact</h3>
-                        <ul className="mt-4 space-y-2 text-sm text-white/90">
-                            <li>
-                                <a href="tel:+212662501470" className="transition hover:text-primary">+212 662 50 1470</a>
-                            </li>
-                            <li>
-                                <a href="mailto:contact@clbklp.ma" className="transition hover:text-primary">contact@clbklp.ma</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h3 className="text-xs font-semibold uppercase tracking-wider text-white/50">Réseaux</h3>
-                        <div className="mt-4 flex gap-2">
-                            {socialLinks.map(({ name, href }) => (
-                                <a
-                                    key={name}
-                                    href={href}
-                                    className="flex h-10 w-10 items-center justify-center rounded-lg bg-white/10 text-white transition hover:bg-cl-yellow hover:text-cl-black"
-                                    aria-label={name}
-                                >
-                                    <SocialIcon name={name} />
-                                </a>
-                            ))}
-                        </div>
+                    <div className="flex gap-4">
+                        {socialLinks.map(({ name, href, Icon }) => (
+                            <a
+                                key={name}
+                                href={href}
+                                className="transition hover:opacity-80"
+                                aria-label={name}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                <Icon className="size-6 fill-[#4B5563]" />
+                            </a>
+                        ))}
                     </div>
                 </div>
             </div>
             <div className="border-t border-white/10">
-                <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-4 py-5 text-sm text-white/50 sm:flex-row lg:px-6">
-                    <span>© {new Date().getFullYear()} CLB KLB. Tous droits réservés.</span>
-                    <div className="flex flex-wrap items-center justify-center gap-6">
-                        <Link href="/a-propos" className="transition hover:text-white">À propos</Link>
-                        <Link href="/contact" className="transition hover:text-white">Contact</Link>
+                <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-2 px-4 py-4 text-sm text-cl-white/80 sm:flex-row lg:px-8">
+                    <span>© 2023 CLB KLP. Tous droits réservés.</span>
+                    <div className="flex items-center gap-4">
+                        <span>Téléphone: +212 662 50 1470</span>
+                        <a
+                            href="mailto:contact@clbklp.ma"
+                            className="hover:underline"
+                        >
+                            contact@clbklp.ma
+                        </a>
                     </div>
                 </div>
             </div>

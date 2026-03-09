@@ -6,7 +6,10 @@ import { initializeTheme } from '@/hooks/use-appearance';
 
 const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
 
-const pages = import.meta.glob<{ default: React.ComponentType }>(['./pages/**/*.jsx', './pages/**/*.tsx']);
+const pages = import.meta.glob<{ default: React.ComponentType }>([
+    './pages/**/*.jsx',
+    './pages/**/*.tsx',
+]);
 
 /**
  * Resolve page component by name, supporting both .jsx and .tsx.

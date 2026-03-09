@@ -47,7 +47,7 @@ function Toolbar({ editor }) {
     const btnClass = (active) =>
         cn(
             'rounded p-1.5 transition-colors hover:bg-muted',
-            active && 'bg-primary/15 text-primary ring-1 ring-primary/30'
+            active && 'bg-primary/15 text-primary ring-1 ring-primary/30',
         );
 
     return (
@@ -87,7 +87,9 @@ function Toolbar({ editor }) {
             <button
                 type="button"
                 className={btnClass(state.h2)}
-                onClick={() => editor.chain().focus().toggleHeading({ level: 2 }).run()}
+                onClick={() =>
+                    editor.chain().focus().toggleHeading({ level: 2 }).run()
+                }
                 title="Heading 2"
                 aria-label="Heading 2"
             >
@@ -97,7 +99,9 @@ function Toolbar({ editor }) {
             <button
                 type="button"
                 className={btnClass(state.h3)}
-                onClick={() => editor.chain().focus().toggleHeading({ level: 3 }).run()}
+                onClick={() =>
+                    editor.chain().focus().toggleHeading({ level: 3 }).run()
+                }
                 title="Heading 3"
                 aria-label="Heading 3"
             >
@@ -129,7 +133,14 @@ function Toolbar({ editor }) {
     );
 }
 
-export default function TipTapEditor({ content, value, onChange, placeholder, className, minHeight = '140px' }) {
+export default function TipTapEditor({
+    content,
+    value,
+    onChange,
+    placeholder,
+    className,
+    minHeight = '140px',
+}) {
     const initialContent = content ?? value ?? '';
 
     const editor = useEditor({
@@ -171,7 +182,7 @@ export default function TipTapEditor({ content, value, onChange, placeholder, cl
         <div
             className={cn(
                 'rounded-md border border-input bg-background text-sm shadow-xs focus-within:ring-2 focus-within:ring-ring focus-within:ring-offset-2',
-                className
+                className,
             )}
         >
             <Toolbar editor={editor} />

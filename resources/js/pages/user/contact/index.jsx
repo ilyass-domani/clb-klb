@@ -6,13 +6,23 @@ import ContactHeroSection from './Partials/ContactHeroSection';
 import ContactFormSection from './Partials/ContactFormSection';
 
 function ContactIndex({ contact }) {
+    console.log(contact);
+
     return (
         <>
             <AppLayout>
                 <Head title="Contact" />
                 <PageHero
-                    subtitle={<TransText fr="Parlez-nous" ar="تواصل معنا" nl="Spreek met ons" />}
-                    title={<TransText fr="Contact" ar="اتصل بنا" nl="Contact" />}
+                    subtitle={
+                        <TransText
+                            fr="Parlez-nous"
+                            ar="تواصل معنا"
+                            nl="Spreek met ons"
+                        />
+                    }
+                    title={
+                        <TransText fr="Contact" ar="اتصل بنا" nl="Contact" />
+                    }
                 />
                 <ContactHeroSection />
                 <ContactFormSection />

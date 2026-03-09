@@ -150,25 +150,13 @@
     --sidebar-ring: oklch(0.439 0 0);
 }
 
-/* Infinite loop carousel: use 2 copies of content, translate by -50% */
-@keyframes scroll {
+@keyframes partners-marquee {
     0% {
         transform: translateX(0);
     }
     100% {
         transform: translateX(-50%);
     }
-}
-
-/* Carousel track: infinite loop, pauses on hover */
-.carousel-loop {
-    animation: scroll 15s linear infinite;
-}
-.carousel-loop--slow {
-    animation-duration: 25s;
-}
-.group\/carousel:hover .carousel-loop {
-    animation-play-state: paused;
 }
 
 @layer base {

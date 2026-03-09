@@ -2,13 +2,13 @@ import { Link } from '@inertiajs/react';
 import TransText from '@/components/TransText';
 
 /**
- * Single blog card: image, category tag, date, title, excerpt, "Lire l'article" link.
+ * Single blog card: image, date, title, excerpt, "Lire l'article" link.
  * Uses project semantic colors (alpha, foreground, muted-foreground).
  *
- * @param {{ blog: { id: number, title: string, excerpt: string, category: string, image_url: string, published_at: string, url: string } }} props
+ * @param {{ blog: { id: number, title: string, excerpt: string, image_url: string, published_at: string, url: string } }} props
  */
 export default function BlogCard({ blog }) {
-    const { title, excerpt, category, image_url, published_at, url } = blog;
+    const { title, excerpt, image_url, published_at, url } = blog;
 
     return (
         <article className="flex flex-col overflow-hidden rounded-lg border border-border bg-card shadow-sm transition hover:shadow-md">
@@ -20,13 +20,10 @@ export default function BlogCard({ blog }) {
                         className="h-full w-full object-cover"
                     />
                 )}
-                <span className="absolute left-3 top-3 rounded bg-cl-white/95 px-2 py-1 text-xs font-semibold uppercase tracking-wide text-alpha">
-                    {category}
-                </span>
             </div>
             <div className="flex flex-1 flex-col p-4 sm:p-5">
                 {published_at && (
-                    <p className="text-xs font-medium uppercase tracking-wide text-muted-foreground sm:text-sm">
+                    <p className="text-xs font-medium tracking-wide text-muted-foreground uppercase sm:text-sm">
                         {published_at}
                     </p>
                 )}
@@ -40,7 +37,11 @@ export default function BlogCard({ blog }) {
                     href={url}
                     className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-foreground hover:text-alpha"
                 >
-                    <TransText fr="LIRE L'ARTICLE" ar="اقرأ المقال" nl="LEES HET ARTIKEL" />
+                    <TransText
+                        fr="LIRE L'ARTICLE"
+                        ar="اقرأ المقال"
+                        nl="LEES HET ARTIKEL"
+                    />
                     <svg
                         className="h-4 w-4 text-alpha"
                         fill="none"

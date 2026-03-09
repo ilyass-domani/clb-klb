@@ -3,8 +3,22 @@ import { useState, useRef, useEffect } from 'react';
 import TransText from '@/components/TransText';
 
 const navLinks = [
-    { key: 'home', href: '/', hasDropdown: false, fr: 'Accueil', ar: 'الرئيسية', nl: 'Home' },
-    { key: 'about', href: '/a-propos', hasDropdown: false, fr: 'À propos', ar: 'عنا', nl: 'Over ons' },
+    {
+        key: 'home',
+        href: '/',
+        hasDropdown: false,
+        fr: 'ACCUEIL',
+        ar: 'الرئيسية',
+        nl: 'HOME',
+    },
+    {
+        key: 'about',
+        href: '/a-propos',
+        hasDropdown: false,
+        fr: 'À PROPOS',
+        ar: 'عنا',
+        nl: 'OVER ONS',
+    },
     {
         key: 'news',
         hasDropdown: true,
@@ -12,11 +26,30 @@ const navLinks = [
         ar: 'أخبار',
         nl: 'Nieuws',
         items: [
-            { key: 'events', href: '/events', fr: 'Événements', ar: 'فعاليات', nl: 'Evenementen' },
-            { key: 'blogs', href: '/blogs', fr: 'Blog', ar: 'مدونة', nl: 'Blog' },
+            {
+                key: 'events',
+                href: '/events',
+                fr: 'Événements',
+                ar: 'فعاليات',
+                nl: 'Evenementen',
+            },
+            {
+                key: 'blogs',
+                href: '/blogs',
+                fr: 'Blog',
+                ar: 'مدونة',
+                nl: 'Blog',
+            },
         ],
     },
-    { key: 'contact', href: '/contact', hasDropdown: false, fr: 'Contact', ar: 'اتصل', nl: 'Contact' },
+    {
+        key: 'contact',
+        href: '/contact',
+        hasDropdown: false,
+        fr: 'CONTACT',
+        ar: 'اتصل',
+        nl: 'CONTACT',
+    },
 ];
 
 const LOCALES = [
@@ -27,7 +60,10 @@ const LOCALES = [
 
 export default function Navbar() {
     const { props } = usePage();
-    const locale = props.locale && ['fr', 'ar', 'nl'].includes(props.locale) ? props.locale : 'fr';
+    const locale =
+        props.locale && ['fr', 'ar', 'nl'].includes(props.locale)
+            ? props.locale
+            : 'fr';
     const [open, setOpen] = useState(false);
     const [newsDropdownOpen, setNewsDropdownOpen] = useState(false);
     const [mobileOpen, setMobileOpen] = useState(false);
@@ -37,10 +73,12 @@ export default function Navbar() {
     useEffect(() => {
         function handleClickOutside(e) {
             if (ref.current && !ref.current.contains(e.target)) setOpen(false);
-            if (newsRef.current && !newsRef.current.contains(e.target)) setNewsDropdownOpen(false);
+            if (newsRef.current && !newsRef.current.contains(e.target))
+                setNewsDropdownOpen(false);
         }
         document.addEventListener('mousedown', handleClickOutside);
-        return () => document.removeEventListener('mousedown', handleClickOutside);
+        return () =>
+            document.removeEventListener('mousedown', handleClickOutside);
     }, []);
 
     useEffect(() => {
@@ -62,11 +100,15 @@ export default function Navbar() {
         `block py-3 text-base font-medium transition-colors ${isActive ? 'text-primary' : 'text-foreground hover:text-primary'}`;
 
     return (
-        <header className="fixed left-0 right-0 top-0 z-50 bg-background/80 backdrop-blur-xl">
-            <nav className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 lg:px-6">
-                <Link href="/" className="flex items-center gap-2.5 transition-opacity hover:opacity-90">
-                    <img src="/images/logo.webp" alt="CLB KLB" className="h-9 w-9 object-contain lg:h-10 lg:w-10" />
-                    <span className="text-base font-semibold tracking-tight text-foreground lg:text-lg">CLB KLB</span>
+        <header className="fixed top-0 right-0 left-0 z-50 bg-cl-white">
+            <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 lg:h-20 lg:px-8">
+                <Link href="/" className="flex items-center gap-2">
+                    <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded bg-alpha text-cl-black">
+                        <span className="text-xs font-bold">CLB KLP</span>
+                    </div>
+                    <span className="text-lg font-semibold text-cl-black">
+                        CLB KLP
+                    </span>
                 </Link>
 
                 <ul className="hidden items-center gap-7 lg:flex">
@@ -74,19 +116,42 @@ export default function Navbar() {
                         const { key, hasDropdown, fr, ar, nl } = item;
                         const href = item.href;
                         if (hasDropdown && item.items) {
-                            const isActive = item.items.some((i) => typeof window !== 'undefined' && window.location.pathname.startsWith(i.href));
+                            const isActive = item.items.some((i) =>
+                                window.location.pathname.startsWith(i.href),
+                            );
                             return (
-                                <li key={key} className="relative" ref={key === 'news' ? newsRef : undefined}>
+                                <li
+                                    key={key}
+                                    className="relative flex items-center gap-1"
+                                    ref={key === 'news' ? newsRef : undefined}
+                                >
                                     <button
                                         type="button"
-                                        onClick={() => setNewsDropdownOpen((v) => !v)}
-                                        className={`flex items-center gap-1 ${linkClass(isActive)}`}
+                                        onClick={() =>
+                                            setNewsDropdownOpen((v) => !v)
+                                        }
+                                        className={`flex items-center gap-1 text-sm font-medium text-cl-black transition hover:opacity-90 ${isActive ? 'underline underline-offset-4' : ''}`}
                                         aria-expanded={newsDropdownOpen}
                                         aria-haspopup="true"
                                     >
-                                        <TransText fr={fr} ar={ar} nl={nl} as="span" />
-                                        <svg className="h-4 w-4 opacity-70" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                        <TransText
+                                            fr={fr}
+                                            ar={ar}
+                                            nl={nl}
+                                            as="span"
+                                        />
+                                        <svg
+                                            className="h-4 w-4 text-cl-black"
+                                            fill="none"
+                                            viewBox="0 0 24 24"
+                                            stroke="currentColor"
+                                        >
+                                            <path
+                                                strokeLinecap="round"
+                                                strokeLinejoin="round"
+                                                strokeWidth={2}
+                                                d="M19 9l-7 7-7-7"
+                                            />
                                         </svg>
                                     </button>
                                     {newsDropdownOpen && (
@@ -94,29 +159,60 @@ export default function Navbar() {
                                             className="absolute left-0 top-full z-50 mt-1.5 min-w-48 rounded-xl bg-card py-1.5 shadow-[var(--shadow-card-hover)] ring-1 ring-border"
                                             role="menu"
                                         >
-                                            {item.items.map(({ key: itemKey, href: itemHref, fr: itemFr, ar: itemAr, nl: itemNl }) => (
-                                                <li key={itemKey} role="none">
-                                                    <Link
-                                                        href={itemHref}
-                                                        role="menuitem"
-                                                        className="block px-4 py-2.5 text-sm text-foreground transition hover:bg-muted hover:text-primary"
-                                                        onClick={() => setNewsDropdownOpen(false)}
+                                            {item.items.map(
+                                                ({
+                                                    key: itemKey,
+                                                    href: itemHref,
+                                                    fr: itemFr,
+                                                    ar: itemAr,
+                                                    nl: itemNl,
+                                                }) => (
+                                                    <li
+                                                        key={itemKey}
+                                                        role="none"
                                                     >
-                                                        <TransText fr={itemFr} ar={itemAr} nl={itemNl} as="span" />
-                                                    </Link>
-                                                </li>
-                                            ))}
+                                                        <Link
+                                                            href={itemHref}
+                                                            role="menuitem"
+                                                            className="block px-4 py-2 text-start text-sm text-foreground transition hover:bg-muted"
+                                                            onClick={() =>
+                                                                setNewsDropdownOpen(
+                                                                    false,
+                                                                )
+                                                            }
+                                                        >
+                                                            <TransText
+                                                                fr={itemFr}
+                                                                ar={itemAr}
+                                                                nl={itemNl}
+                                                                as="span"
+                                                            />
+                                                        </Link>
+                                                    </li>
+                                                ),
+                                            )}
                                         </ul>
                                     )}
                                 </li>
                             );
                         }
                         const path = href === '/' ? '/' : href;
-                        const isActive = typeof window !== 'undefined' && (path !== '/' ? window.location.pathname.startsWith(path) : window.location.pathname === '/');
+                        const isActive =
+                            path !== '/'
+                                ? window.location.pathname.startsWith(path)
+                                : window.location.pathname === '/';
                         return (
-                            <li key={key}>
-                                <Link href={href} className={linkClass(isActive)}>
-                                    <TransText fr={fr} ar={ar} nl={nl} as="span" />
+                            <li key={key} className="flex items-center gap-1">
+                                <Link
+                                    href={href}
+                                    className={`text-sm font-medium text-cl-black transition hover:opacity-90 ${isActive ? 'underline underline-offset-4' : ''}`}
+                                >
+                                    <TransText
+                                        fr={fr}
+                                        ar={ar}
+                                        nl={nl}
+                                        as="span"
+                                    />
                                 </Link>
                             </li>
                         );
@@ -132,9 +228,20 @@ export default function Navbar() {
                             aria-label="Langue"
                             aria-expanded={open}
                         >
-                            {LOCALES.find((l) => l.code === locale)?.label ?? 'FR'}
-                            <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                            {LOCALES.find((l) => l.code === locale)?.label ??
+                                'FR'}
+                            <svg
+                                className="h-4 w-4"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                            >
+                                <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    strokeWidth={2}
+                                    d="M19 9l-7 7-7-7"
+                                />
                             </svg>
                         </button>
                         {open && (
@@ -155,9 +262,14 @@ export default function Navbar() {
                     </div>
                     <Link
                         href="#"
-                        className="hidden rounded-lg bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition hover:opacity-95 lg:inline-block"
+                        className="rounded-lg bg-alpha px-4 py-2 text-sm font-medium text-cl-white uppercase transition hover:opacity-95"
                     >
-                        <TransText fr="Devenir membre" ar="كن عضواً" nl="Lid worden" as="span" />
+                        <TransText
+                            fr="DEVENIR MEMBRE"
+                            ar="كن عضواً"
+                            nl="LID WORDEN"
+                            as="span"
+                        />
                     </Link>
 
                     <button

@@ -7,7 +7,10 @@ import { usePage } from '@inertiajs/react';
  */
 export default function SetDocumentDirection() {
     const { props } = usePage();
-    const locale = props.locale && ['fr', 'ar', 'nl'].includes(props.locale) ? props.locale : 'fr';
+    const locale =
+        props.locale && ['fr', 'ar', 'nl'].includes(props.locale)
+            ? props.locale
+            : 'fr';
 
     useEffect(() => {
         const dir = locale === 'ar' ? 'rtl' : 'ltr';

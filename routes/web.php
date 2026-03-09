@@ -1,11 +1,11 @@
 <?php
 
 use App\Http\Controllers\EventController;
-use App\Http\Controllers\LocaleController;
 use App\Http\Controllers\ParticipantController;
 use App\Http\Controllers\PartnerController;
 use App\Http\Controllers\TeamMemberController;
-use App\Models\Event;
+use App\Http\Controllers\User\HomeController;
+use App\Http\Controllers\User\LocaleController;
 use App\Models\Partner;
 use App\Models\TeamMember;
 use Illuminate\Support\Facades\Route;
@@ -13,48 +13,7 @@ use Inertia\Inertia;
 
 Route::post('/locale', [LocaleController::class, 'store']);
 
-Route::get('/', function () {
-    $teamMembers = TeamMember::orderBy('sort_order')->orderBy('id')->get()
-        ->map(fn ($m) => [
-            'id' => $m->id,
-            'name' => $m->name,
-            'category' => $m->category,
-            'image_path' => $m->image_path,
-            'imageUrl' => $m->image_url,
-            'position' => $m->position,
-            'description' => $m->description,
-            'show_social' => $m->show_social,
-        ]);
-    $partners = Partner::orderBy('sort_order')->orderBy('id')->get()
-        ->map(fn ($p) => ['id' => $p->id, 'name' => $p->name, 'logoUrl' => $p->logo_url, 'link' => $p->link]);
-
-    $recentEvents = Event::orderBy('date', 'desc')->take(4)->get()->map(function ($e) {
-        $imageUrl = $e->image ? (str_starts_with($e->image, 'http') ? $e->image : asset('storage/' . $e->image)) : null;
-        $dateObj = $e->date ? \Carbon\Carbon::parse($e->date) : null;
-        $dateFormatted = $dateObj ? $dateObj->format('d M') : '';
-        $timeStr = $e->time ? \Carbon\Carbon::parse($e->time)->format('H:i') : '';
-        $timeRangeStr = $dateObj ? $dateObj->format('l, d F Y') . ($timeStr ? ' ' . $timeStr : '') : '';
-        $timeRange = ['fr' => $timeRangeStr, 'ar' => $timeRangeStr, 'nl' => $timeRangeStr];
-        return [
-            'id' => $e->id,
-            'title' => $e->title,
-            'subtitle' => $e->categorie ?? null,
-            'description' => $e->description ?? null,
-            'date' => $dateFormatted,
-            'timeRange' => $timeRange,
-            'location' => $e->location ?? '',
-            'imageUrl' => $imageUrl,
-            'href' => route('events.show', $e),
-            'price' => $e->price,
-        ];
-    });
-
-    return Inertia::render('user/home/index', [
-        'teamMembers' => $teamMembers,
-        'partners' => $partners,
-        'recentEvents' => $recentEvents,
-    ]);
-})->name('home');
+Route::get('/', HomeController::class)->name('home');
 
 Route::get('/a-propos', function () {
     $teamMembers = TeamMember::orderBy('sort_order')->orderBy('id')->get()
@@ -118,6 +77,7 @@ Route::group(['middleware' => ['auth', 'role:admin', 'verified']], function () {
 
 
 
+require __DIR__ . '/user/blogs.php';
 require __DIR__ . '/blog.php';
 require __DIR__ . '/contact.php';
 require __DIR__ . '/settings.php';

@@ -25,7 +25,12 @@ function formatDate(iso) {
     }
 }
 
-export default function BlogsTable({ blogs, activeLocale, onEdit, onDeleteSuccess }) {
+export default function BlogsTable({
+    blogs,
+    activeLocale,
+    onEdit,
+    onDeleteSuccess,
+}) {
     return (
         <Table>
             <TableHeader>
@@ -39,7 +44,10 @@ export default function BlogsTable({ blogs, activeLocale, onEdit, onDeleteSucces
             <TableBody>
                 {blogs.length === 0 ? (
                     <TableRow>
-                        <TableCell colSpan={4} className="text-muted-foreground text-center py-8">
+                        <TableCell
+                            colSpan={4}
+                            className="py-8 text-center text-muted-foreground"
+                        >
                             No blogs yet. Create one to get started.
                         </TableCell>
                     </TableRow>
@@ -47,11 +55,21 @@ export default function BlogsTable({ blogs, activeLocale, onEdit, onDeleteSucces
                     blogs.map((blog) => (
                         <TableRow key={blog.id}>
                             <TableCell className="font-medium">
-                                {blog.title_active || blog.title?.[activeLocale] || 'Untitled'}
+                                {blog.title_active ||
+                                    blog.title?.[activeLocale] ||
+                                    'Untitled'}
                             </TableCell>
                             <TableCell>
-                                <Badge variant={blog.status === 'published' ? 'default' : 'secondary'}>
-                                    {blog.status === 'published' ? 'Published' : 'Draft'}
+                                <Badge
+                                    variant={
+                                        blog.status === 'published'
+                                            ? 'default'
+                                            : 'secondary'
+                                    }
+                                >
+                                    {blog.status === 'published'
+                                        ? 'Published'
+                                        : 'Draft'}
                                 </Badge>
                             </TableCell>
                             <TableCell>{formatDate(blog.created_at)}</TableCell>
@@ -65,7 +83,10 @@ export default function BlogsTable({ blogs, activeLocale, onEdit, onDeleteSucces
                                     >
                                         <PencilIcon className="size-4" />
                                     </Button>
-                                    <DeleteBlogButton blog={blog} onDeleted={onDeleteSuccess} />
+                                    <DeleteBlogButton
+                                        blog={blog}
+                                        onDeleted={onDeleteSuccess}
+                                    />
                                 </div>
                             </TableCell>
                         </TableRow>

@@ -14,13 +14,14 @@ export default function Pagination({ pagination }) {
 
     const { current_page, last_page, links, next_url } = pagination;
 
-    const pageLinks = links && links.length > 0
-        ? links
-        : Array.from({ length: last_page }, (_, i) => ({
-              url: `?page=${i + 1}`,
-              label: String(i + 1),
-              active: i + 1 === current_page,
-          }));
+    const pageLinks =
+        links && links.length > 0
+            ? links
+            : Array.from({ length: last_page }, (_, i) => ({
+                  url: `?page=${i + 1}`,
+                  label: String(i + 1),
+                  active: i + 1 === current_page,
+              }));
 
     return (
         <nav
@@ -41,7 +42,11 @@ export default function Pagination({ pagination }) {
 
                     if (!link.url) {
                         return (
-                            <span key={idx} className={className} aria-current="page">
+                            <span
+                                key={idx}
+                                className={className}
+                                aria-current="page"
+                            >
                                 {link.label}
                             </span>
                         );

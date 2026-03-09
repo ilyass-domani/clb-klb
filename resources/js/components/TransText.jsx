@@ -17,9 +17,19 @@ const DEFAULT = 'fr';
  * @param {string} [as='span'] - HTML tag to render (span, h1, p, etc.)
  * @param {string} [className] - Optional CSS classes
  */
-export default function TransText({ fr, ar, nl, as: Tag = 'span', className, ...rest }) {
+export default function TransText({
+    fr,
+    ar,
+    nl,
+    as: Tag = 'span',
+    className,
+    ...rest
+}) {
     const { props } = usePage();
-    const locale = props.locale && SUPPORTED.includes(props.locale) ? props.locale : DEFAULT;
+    const locale =
+        props.locale && SUPPORTED.includes(props.locale)
+            ? props.locale
+            : DEFAULT;
 
     const text = { fr, ar, nl }[locale] ?? fr ?? ar ?? nl ?? '';
 

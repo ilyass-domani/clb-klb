@@ -9,7 +9,7 @@ export function UserInfo({
     user: User;
     showEmail?: boolean;
 }) {
-    const getInitials = useInitials();    
+    const getInitials = useInitials();
     // Handle case where user or user.name might be undefined/null
     const userName = user?.name ?? '';
     const userEmail = user?.email ?? '';

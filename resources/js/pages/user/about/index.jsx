@@ -14,8 +14,20 @@ function AboutIndex({ teamMembers = [], partners = [] }) {
             <AppLayout>
                 <Head title="À propos" />
                 <PageHero
-                    subtitle={<TransText fr="faire connaissance" ar="تعرف علينا" nl="maak kennis" />}
-                    title={<TransText fr="À propos de nous" ar="عنا" nl="Over ons" />}
+                    subtitle={
+                        <TransText
+                            fr="faire connaissance"
+                            ar="تعرف علينا"
+                            nl="maak kennis"
+                        />
+                    }
+                    title={
+                        <TransText
+                            fr="À propos de nous"
+                            ar="عنا"
+                            nl="Over ons"
+                        />
+                    }
                 />
                 <WhoWeAreSection />
                 <VisionSection />

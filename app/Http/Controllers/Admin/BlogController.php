@@ -8,6 +8,7 @@ use App\Http\Requests\UpdateBlogRequest;
 use App\Models\Blog;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Inertia\Inertia;
 use Inertia\Response;
 
@@ -32,6 +33,7 @@ class BlogController extends Controller
                     'title' => $blog->title ?? [],
                     'slug' => $blog->slug ?? [],
                     'body' => $blog->body ?? [],
+                    'image' => $blog->image ? asset('storage/' . $blog->image) : null,
                     'status' => $blog->published_at ? 'published' : 'draft',
                     'published_at' => $blog->published_at?->toIso8601String(),
                     'created_at' => $blog->created_at->toIso8601String(),
@@ -54,7 +56,13 @@ class BlogController extends Controller
     {
         $validated = $request->validated();
 
+        $imagePath = null;
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('blogs', 'public');
+        }
+
         Blog::query()->create([
+            'image' => $imagePath,
             'title' => [
                 'ar' => $validated['title']['ar'] ?? '',
                 'fr' => $validated['title']['fr'] ?? '',
@@ -71,7 +79,7 @@ class BlogController extends Controller
                 'nl' => $validated['body']['nl'] ?? '',
             ],
             'description' => ['ar' => '', 'fr' => '', 'nl' => ''],
-            'category_slug' => 'evenements',
+            'published_at' => now(),
         ]);
 
         return redirect()->route('admin.blogs.index')->with('success', 'Blog created.');
@@ -84,7 +92,16 @@ class BlogController extends Controller
     {
         $validated = $request->validated();
 
+        $imagePath = $blog->image;
+        if ($request->hasFile('image')) {
+            if ($blog->image) {
+                Storage::disk('public')->delete($blog->image);
+            }
+            $imagePath = $request->file('image')->store('blogs', 'public');
+        }
+
         $blog->update([
+            'image' => $imagePath,
             'title' => [
                 'ar' => $validated['title']['ar'] ?? '',
                 'fr' => $validated['title']['fr'] ?? '',
@@ -110,6 +127,9 @@ class BlogController extends Controller
      */
     public function destroy(Blog $blog): RedirectResponse
     {
+        if ($blog->image) {
+            Storage::disk('public')->delete($blog->image);
+        }
         $blog->delete();
         return redirect()->route('admin.blogs.index')->with('success', 'Blog deleted.');
     }
