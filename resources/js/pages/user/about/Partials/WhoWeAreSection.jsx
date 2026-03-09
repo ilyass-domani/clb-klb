@@ -12,7 +12,7 @@ export default function WhoWeAreSection() {
             <div className="mx-auto grid max-w-6xl gap-12 px-4 lg:grid-cols-2 lg:gap-16 lg:px-6">
                 <div className="relative aspect-[16/10] overflow-hidden rounded-2xl bg-muted shadow-[var(--shadow-card)]">
                     <img
-                        src="/images/about-team.png"
+                        src="/assets/about-team.png"
                         alt="Équipe CLB KLB"
                         className="h-full w-full object-cover object-center"
                     />

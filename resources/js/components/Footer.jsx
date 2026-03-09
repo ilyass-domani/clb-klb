@@ -82,13 +82,13 @@ export default function Footer() {
                             href="/"
                             className="mb-4 inline-flex items-center gap-2"
                         >
-                            <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded bg-alpha">
-                                <span className="text-xs font-bold text-cl-white">
-                                    CLB KLP
-                                </span>
-                            </div>
+                            <img
+                                src="/assets/logo.webp"
+                                alt="CLB KLB"
+                                className="h-8 w-8 shrink-0 object-contain"
+                            />
                             <span className="font-semibold text-cl-white">
-                                CLB KLP
+                                CLB KLB
                             </span>
                         </Link>
                         <p className="text-sm text-cl-white/90">

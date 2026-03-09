@@ -103,11 +103,13 @@ export default function Navbar() {
         <header className="fixed top-0 right-0 left-0 z-50 bg-cl-white">
             <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 lg:h-20 lg:px-8">
                 <Link href="/" className="flex items-center gap-2">
-                    <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded bg-alpha text-cl-black">
-                        <span className="text-xs font-bold">CLB KLP</span>
-                    </div>
+                    <img
+                        src="/assets/logo.webp"
+                        alt="CLB KLB"
+                        className="h-9 w-9 shrink-0 object-contain"
+                    />
                     <span className="text-lg font-semibold text-cl-black">
-                        CLB KLP
+                        CLB KLB
                     </span>
                 </Link>
 

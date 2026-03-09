@@ -50,7 +50,7 @@ export default function ActivitiesSection() {
                 </div>
                 <div className="relative aspect-[16/10] overflow-hidden rounded-2xl">
                     <img
-                        src="/images/about-team.png"
+                        src="/assets/about-team.png"
                         alt="Équipe CLB KLB"
                         className="h-full w-full object-cover object-center"
                     />

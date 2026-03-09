@@ -159,6 +159,34 @@
     }
 }
 
+@keyframes carousel-scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+@layer components {
+    .carousel-loop {
+        display: flex;
+        width: max-content;
+        animation-name: carousel-scroll;
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
+        animation-duration: 20s;
+    }
+
+    .carousel-loop--slow {
+        animation-duration: 25s;
+    }
+
+    .group\/carousel:hover .carousel-loop {
+        animation-play-state: paused;
+    }
+}
+
 @layer base {
     * {
         @apply border-border;

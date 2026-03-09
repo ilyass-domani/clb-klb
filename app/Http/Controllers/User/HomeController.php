@@ -4,6 +4,9 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Models\Blog;
+use App\Models\Partner;
+use App\Models\TeamMember;
+use App\Models\Event;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Inertia\Response;
@@ -43,8 +46,70 @@ class HomeController extends Controller
             ->values()
             ->all();
 
+        $recentEvents = Event::orderBy('date', 'desc')
+            ->take(4)
+            ->get()
+            ->map(function (Event $event) {
+                $image = $event->image;
+                $imageUrl = $image
+                    ? (str_starts_with($image, 'http') ? $image : asset('storage/' . $image))
+                    : null;
+
+                $dateObj = $event->date ? \Carbon\Carbon::parse($event->date) : null;
+                $dateFormatted = $dateObj ? $dateObj->format('d M') : '';
+                $timeStr = $event->time ? \Carbon\Carbon::parse($event->time)->format('H:i') : '';
+                $timeRangeStr = $dateObj ? $dateObj->format('l, d F Y') . ($timeStr ? ' ' . $timeStr : '') : '';
+                $timeRange = [
+                    'fr' => $timeRangeStr,
+                    'ar' => $timeRangeStr,
+                    'nl' => $timeRangeStr,
+                ];
+
+                return [
+                    'id' => $event->id,
+                    'title' => $event->title,
+                    'subtitle' => $event->categorie,
+                    'description' => $event->description,
+                    'date' => $dateFormatted,
+                    'timeRange' => $timeRange,
+                    'location' => $event->location ?? '',
+                    'imageUrl' => $imageUrl,
+                    'href' => route('events.show', $event),
+                    'price' => $event->price,
+                ];
+            })
+            ->values()
+            ->all();
+
+        $teamMembers = TeamMember::orderBy('sort_order')->orderBy('id')->get()
+            ->map(fn (TeamMember $m) => [
+                'id' => $m->id,
+                'name' => $m->name,
+                'category' => $m->category,
+                'image_path' => $m->image_path,
+                'imageUrl' => $m->image_url,
+                'position' => $m->position,
+                'description' => $m->description,
+                'show_social' => $m->show_social,
+            ])
+            ->values()
+            ->all();
+
+        $partners = Partner::orderBy('sort_order')->orderBy('id')->get()
+            ->map(fn (Partner $p) => [
+                'id' => $p->id,
+                'name' => $p->name,
+                'logoUrl' => $p->logo_url,
+                'link' => $p->link,
+            ])
+            ->values()
+            ->all();
+
         return Inertia::render('user/home/index', [
             'latestBlogs' => $latestBlogs,
+            'recentEvents' => $recentEvents,
+            'teamMembers' => $teamMembers,
+            'partners' => $partners,
         ]);
     }
 }

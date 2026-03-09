@@ -5,25 +5,25 @@ import StatsSection from './partials/StatsSection';
 import EventsSection from './partials/EventsSection';
 import StrategicObjectivesSection from './partials/StrategicObjectivesSection';
 import NetworkVideoSection from './partials/NetworkVideoSection';
-import TeamSection from './partials/TeamSection';
-import PartnersSection from './partials/PartnersSection';
+import TeamSection from '@/components/TeamSection';
+import PartnersSection from '@/components/PartnersSection';
 import CallToActionSection from './partials/CallToActionSection';
 import ContactStripSection from './partials/ContactStripSection';
 import LatestBlogSection from './partials/LatestBlogSection';
 
 
-function HomeIndex({ latestBlogs }) {
+function HomeIndex({ latestBlogs, recentEvents = [], teamMembers = [], partners = [] }) {
     return (
         <>
             <Head title="Accueil" />
             <HeroSection />
             <StatsSection />
-            <EventsSection />
+            <EventsSection recentEvents={recentEvents} />
             <StrategicObjectivesSection />
             <NetworkVideoSection />
             <LatestBlogSection latestBlogs={latestBlogs} />
-            <TeamSection />
-            <PartnersSection />
+            <TeamSection teamMembers={teamMembers} />
+            <PartnersSection partners={partners} />
             <CallToActionSection />
             <ContactStripSection />
         </>

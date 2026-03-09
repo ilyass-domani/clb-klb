@@ -10,15 +10,16 @@ export default function AppLayout({
     breadcrumbs,
     ...props
 }: AppLayoutProps) {
-    const { auth } = usePage().props as { auth?: { user?: { role?: string } } };
-    const isAdmin = auth?.user?.role === 'admin';
+    const page = usePage();
+    const url = page.url as string;
+    const isAdminRoute = url.startsWith('/admin');
 
     return (
         <AppLayoutTemplate breadcrumbs={breadcrumbs} {...props}>
             <SetDocumentDirection />
-            {!isAdmin && <Navbar />}
+            {!isAdminRoute && <Navbar />}
             {children}
-            {!isAdmin && <Footer />}
+            {!isAdminRoute && <Footer />}
         </AppLayoutTemplate>
     );
 }
