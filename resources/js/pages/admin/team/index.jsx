@@ -26,6 +26,8 @@ export default function AdminTeamIndex({ teamMembers }) {
         });
     };
 
+    console.log(teamMembers);
+
     return (
         <AppLayout breadcrumbs={breadcrumbs}>
             <Head title="Team members" />

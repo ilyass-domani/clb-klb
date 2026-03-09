@@ -2,8 +2,8 @@ import { Head } from '@inertiajs/react';
 import AppLayout from '@/layouts/app-layout';
 import PageHero from '@/components/PageHero';
 import TransText from '@/components/TransText';
-import BlogCard from './Partials/BlogCard';
-import Pagination from './Partials/Pagination';
+import BlogCard from './partials/BlogCard';
+import Pagination from './partials/Pagination';
 
 /**
  * Blog listing page. Data (blogs, categories, pagination) is provided by

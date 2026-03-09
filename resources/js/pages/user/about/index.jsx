@@ -1,7 +1,6 @@
 import { Head } from '@inertiajs/react';
 import AppLayout from '@/layouts/app-layout';
-import PageHero from '@/components/PageHero';
-import TransText from '@/components/TransText';
+import { TransText, PageHero } from '@/components';
 import WhoWeAreSection from './Partials/WhoWeAreSection';
 import VisionSection from './Partials/VisionSection';
 import ActivitiesSection from './Partials/ActivitiesSection';
@@ -28,6 +27,7 @@ function AboutIndex({ teamMembers = [], partners = [] }) {
                             nl="Over ons"
                         />
                     }
+                    backgroundImage="assets/page-hero.webp"
                 />
                 <WhoWeAreSection />
                 <VisionSection />

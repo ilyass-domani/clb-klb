@@ -5,7 +5,7 @@ const DEFAULT_BACKGROUND_IMAGE =
  * Reusable page hero: full-width dark section with optional background image,
  * subtitle and title. Use at the top of every non-home page (À propos, Contact, etc.).
  */
-export default function PageHero({
+export function PageHero({
     subtitle,
     title,
     backgroundImage = DEFAULT_BACKGROUND_IMAGE,
@@ -13,10 +13,10 @@ export default function PageHero({
     return (
         <section className="relative flex min-h-[45vh] items-center justify-center bg-foreground px-4 pt-28 pb-20">
             <div
-                className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-20"
+                className="absolute inset-0 bg-cover bg-center bg-no-repeat"
                 style={{ backgroundImage: `url(${backgroundImage})` }}
             />
-            <div className="absolute inset-0 bg-foreground/85" />
+            <div className="absolute inset-0 bg-black/75" />
             <div className="relative z-10 mx-auto max-w-3xl text-center">
                 {subtitle && (
                     <p className="text-sm font-medium tracking-wider text-cl-white/80 uppercase">
@@ -32,3 +32,5 @@ export default function PageHero({
         </section>
     );
 }
+
+export default PageHero;

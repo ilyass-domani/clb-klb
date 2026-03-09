@@ -81,6 +81,7 @@ export default function TeamSection() {
                         as="span"
                     />
                 </h2>
+                
                 <div className="mt-12 flex flex-wrap items-start justify-center gap-8 lg:gap-10">
                     {team.map((member, i) => (
                         <div

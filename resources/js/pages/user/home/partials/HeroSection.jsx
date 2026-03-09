@@ -1,5 +1,5 @@
 import { Link } from '@inertiajs/react';
-import TransText from '@/components/TransText';
+import { TransText } from '@/components';
 
 export default function HeroSection() {
     return (
@@ -18,31 +18,20 @@ export default function HeroSection() {
                 }}
             />
             <div className="relative z-10 mx-auto max-w-4xl text-center">
-                <h1 className="mb-6 text-3xl leading-tight font-bold text-cl-white uppercase sm:text-4xl lg:text-5xl xl:text-6xl">
-                    <TransText
-                        fr="Le réseau des diplômés"
-                        ar="شبكة الخريجين"
-                        nl="Het netwerk van afgestudeerden"
-                        as="span"
-                    />
-                </h1>
-                <h1 className="mb-6 text-4xl font-extrabold leading-[1.1] tracking-tight text-cl-white sm:text-5xl lg:text-6xl xl:text-7xl">
-                    <TransText
-                        fr="Le Cercle des Lauréats de Belgique"
-                        ar="دائرة خريجي بلجيكا"
-                        nl="De Kring van Belgische Laureaten"
-                        as="span"
-                    />
-                </h1>
-                <div className="mx-auto mb-8 h-1 w-20 rounded-full bg-alpha" />
-                <p className="mx-auto mb-12 max-w-2xl text-base leading-relaxed text-cl-white/95 sm:text-lg lg:text-xl">
-                    <TransText
-                        fr="Le réseau des diplômés de l'enseignement belge au Maroc. Nous fédérons les talents, créons des opportunités et renforçons les liens entre la Belgique et le Maroc."
-                        ar="شبكة خريجي التعليم البلجيكي في المغرب. نوحد المواهب ونخلق الفرص ونوطد العلاقات بين بلجيكا والمغرب."
-                        nl="Het netwerk van afgestudeerden van het Belgisch onderwijs in Marokko. We verbinden talenten, creëren kansen en versterken de banden tussen België en Marokko."
-                        as="span"
-                    />
-                </p>
+                <TransText
+                    fr="Le Cercle des Lauréats de Belgique"
+                    ar="دائرة خريجي بلجيكا"
+                    nl="De Kring van Belgische Laureaten"
+                    as="h1"
+                    className="mb-6 text-4xl leading-[1.1] font-extrabold tracking-tight text-cl-white sm:text-5xl lg:text-6xl xl:text-7xl"
+                />
+                <TransText
+                    fr="Le réseau des diplômés de l'enseignement belge au Maroc. Nous fédérons les talents, créons des opportunités et renforçons les liens entre la Belgique et le Maroc."
+                    ar="شبكة خريجي التعليم البلجيكي في المغرب. نوحد المواهب ونخلق الفرص ونوطد العلاقات بين بلجيكا والمغرب."
+                    nl="Het netwerk van afgestudeerden van het Belgisch onderwijs in Marokko. We verbinden talenten, creëren kansen en versterken de banden tussen België en Marokko."
+                    as="span"
+                    className="mx-auto mb-12 max-w-2xl text-base leading-relaxed text-cl-white/95 sm:text-lg lg:text-xl"
+                />
                 <div className="mt-12 flex flex-wrap items-center justify-center gap-4">
                     <Link
                         href="/a-propos"

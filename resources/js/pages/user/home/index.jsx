@@ -1,7 +1,6 @@
 import { Head } from '@inertiajs/react';
 import AppLayout from '@/layouts/app-layout';
 import HeroSection from './partials/HeroSection';
-import StatsSection from './partials/StatsSection';
 import EventsSection from './partials/EventsSection';
 import StrategicObjectivesSection from './partials/StrategicObjectivesSection';
 import NetworkVideoSection from './partials/NetworkVideoSection';
@@ -11,13 +10,16 @@ import CallToActionSection from './partials/CallToActionSection';
 import ContactStripSection from './partials/ContactStripSection';
 import LatestBlogSection from './partials/LatestBlogSection';
 
-
-function HomeIndex({ latestBlogs, recentEvents = [], teamMembers = [], partners = [] }) {
+function HomeIndex({
+    latestBlogs,
+    recentEvents = [],
+    teamMembers = [],
+    partners = [],
+}) {
     return (
         <>
             <Head title="Accueil" />
             <HeroSection />
-            <StatsSection />
             <EventsSection recentEvents={recentEvents} />
             <StrategicObjectivesSection />
             <NetworkVideoSection />

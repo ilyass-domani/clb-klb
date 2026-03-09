@@ -5,6 +5,7 @@ import AppLayout from '@/layouts/app-layout';
 import { Button } from '@/components/ui/button';
 import ConfirmDeleteDialog from '@/components/confirm-delete-dialog';
 import AlertSuccess from '@/components/alert-success';
+import TransText from '@/components/TransText';
 
 const breadcrumbs = [
     { title: 'Dashboard', href: '/admin/dashboard' },
@@ -53,7 +54,7 @@ export default function AdminParticipantIndex({ participants, events, selectedEv
                         <option value="">All Events</option>
                         {events.map((event) => (
                             <option key={event.id} value={event.id}>
-                                {event.title}
+                                <TransText {...event.title} />
                             </option>
                         ))}
                     </select>
@@ -90,7 +91,7 @@ export default function AdminParticipantIndex({ participants, events, selectedEv
                                     </tr>
                                 )}
                                 {participants.map((participant) => (
-                                    <tr key={participant.id} className="transition-colors hover:bg-alpha/[0.02]">
+                                    <tr key={participant.id} className="transition-colors hover:bg-alpha/2">
                                         <td className="px-6 py-4 font-semibold text-foreground">{participant.first_name}</td>
                                         <td className="px-6 py-4 text-foreground">{participant.last_name}</td>
                                         <td className="px-6 py-4 text-muted-foreground">
@@ -107,7 +108,7 @@ export default function AdminParticipantIndex({ participants, events, selectedEv
                                         </td>
                                         <td className="px-6 py-4">
                                             <span className="inline-block rounded-full bg-alpha/10 px-2.5 py-0.5 text-xs font-medium text-alpha">
-                                                {participant.event?.title || '—'}
+                                                <TransText {...participant.event.title} />
                                             </span>
                                         </td>
                                         <td className="px-6 py-4 text-muted-foreground">

@@ -1,4 +1,4 @@
-import TransText from '@/components/TransText';
+import { TransText, SectionHeader } from '@/components';
 
 function PartnerLogo({ partner }) {
     const logoUrl = partner.logoUrl ?? partner.logo_path;
@@ -18,24 +18,34 @@ export default function PartnersSection({ partners = [] }) {
     return (
         <section className="border-b border-border bg-background py-20 lg:py-28">
             <div className="mx-auto max-w-6xl px-4 lg:px-6">
-                <div className="text-center">
-                    <span className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">
-                        <TransText fr="Nos partenaires" ar="شركاؤنا" nl="Onze partners" as="span" />
-                    </span>
-                    <h2 className="mt-4 text-3xl font-semibold tracking-tight text-foreground lg:text-4xl">
-                        <TransText fr="Nos partenaires" ar="شركاؤنا" nl="Onze partners" as="span" />
-                    </h2>
-                </div>
+                <SectionHeader
+                    label={{
+                        fr: 'Nos partenaires',
+                        ar: 'شركاؤنا',
+                        nl: 'Onze partners',
+                    }}
+                    title={{
+                        fr: 'Nos partenaires',
+                        ar: 'شركاؤنا',
+                        nl: 'Onze partners',
+                    }}
+                />
                 <div className="group/carousel mt-14 overflow-hidden">
                     <div className="carousel-loop carousel-loop--slow flex w-max">
-                        <div className="flex items-center gap-10 pr-10">
+                        <div className="flex items-center gap-20 pr-20">
                             {partners.map((partner, i) => (
-                                <PartnerLogo key={`a-${partner.id ?? i}`} partner={partner} />
+                                <PartnerLogo
+                                    key={`a-${partner.id ?? i}`}
+                                    partner={partner}
+                                />
                             ))}
                         </div>
-                        <div className="flex items-center gap-10 pr-10">
+                        <div className="flex items-center gap-20 pr-20">
                             {partners.map((partner, i) => (
-                                <PartnerLogo key={`b-${partner.id ?? i}`} partner={partner} />
+                                <PartnerLogo
+                                    key={`b-${partner.id ?? i}`}
+                                    partner={partner}
+                                />
                             ))}
                         </div>
                     </div>
