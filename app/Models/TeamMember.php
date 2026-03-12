@@ -13,11 +13,7 @@ class TeamMember extends Model
         'position',
         'description',
         'sort_order',
-        'show_social',
-    ];
-
-    protected $casts = [
-        'show_social' => 'boolean',
+        'social_link',
     ];
 
     protected $appends = ['image_url'];

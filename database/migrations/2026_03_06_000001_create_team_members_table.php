@@ -15,8 +15,7 @@ return new class extends Migration
             $table->string('position')->nullable();
             $table->unsignedSmallInteger('sort_order')->default(0);
             $table->string('category')->default('bureau');
-            $table->text('description')->nullable();
-            $table->boolean('show_social')->default(false);
+            $table->string('social_link')->nullable();
             $table->timestamps();
         });
     }

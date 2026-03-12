@@ -89,7 +89,7 @@ class HomeController extends Controller
                 'imageUrl' => $m->image_url,
                 'position' => $m->position,
                 'description' => $m->description,
-                'show_social' => $m->show_social,
+                'social_link' => $m->social_link,
             ])
             ->values()
             ->all();

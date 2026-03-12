@@ -89,6 +89,20 @@ export default function AdminTeamIndex({ teamMembers }) {
                             render: (m) => m.position || '—',
                         },
                         {
+                            header: 'Category',
+                            headerClassName:
+                                'hidden px-4 py-4 sm:px-6 md:table-cell',
+                            cellClassName:
+                                'hidden px-4 py-3 sm:px-6 md:table-cell',
+                            render: (m) => (
+                                <span className="inline-block rounded-full bg-alpha/10 px-2.5 py-0.5 text-xs font-medium text-alpha">
+                                    {m.category === 'honorary'
+                                        ? 'Honorary'
+                                        : 'Bureau'}
+                                </span>
+                            ),
+                        },
+                        {
                             header: 'Order',
                             headerClassName:
                                 'hidden px-4 py-4 sm:px-6 md:table-cell',
