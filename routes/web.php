@@ -26,7 +26,7 @@ Route::get('/a-propos', function () {
             'imageUrl' => $m->image_url,
             'position' => $m->position,
             'description' => $m->description,
-            'show_social' => $m->show_social,
+            'social_link' => $m->social_link,
         ]);
     $partners = Partner::orderBy('sort_order')->orderBy('id')->get()
         ->map(fn ($p) => ['id' => $p->id, 'name' => $p->name, 'logoUrl' => $p->logo_url, 'link' => $p->link]);

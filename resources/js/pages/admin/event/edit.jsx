@@ -28,7 +28,7 @@ export default function AdminEventEdit({ event }) {
         description: transValue(event.description),
         date: event.date || '',
         time: event.time || '',
-        categorie: transValue(event.categorie),
+        category: transValue(event.category),
         price: event.price || 0,
         image: event.image || '',
         location: event.location || '',
@@ -107,24 +107,24 @@ export default function AdminEventEdit({ event }) {
                         <div className="grid gap-4 p-6 md:grid-cols-3">
                             {LANGS.map((lang) => (
                                 <div key={lang.code} className="space-y-1.5">
-                                    <Label htmlFor={`categorie_${lang.code}`}>
+                                    <Label htmlFor={`category_${lang.code}`}>
                                         {lang.label}
                                     </Label>
                                     <Input
-                                        id={`categorie_${lang.code}`}
+                                        id={`category_${lang.code}`}
                                         className="rounded-lg"
-                                        value={data.categorie[lang.code]}
+                                        value={data.category[lang.code]}
                                         onChange={(e) =>
                                             setTransField(
-                                                'categorie',
+                                                'category',
                                                 lang.code,
                                                 e.target.value,
                                             )
                                         }
                                     />
-                                    {errors[`categorie.${lang.code}`] && (
+                                    {errors[`category.${lang.code}`] && (
                                         <p className="text-xs text-destructive">
-                                            {errors[`categorie.${lang.code}`]}
+                                            {errors[`category.${lang.code}`]}
                                         </p>
                                     )}
                                 </div>

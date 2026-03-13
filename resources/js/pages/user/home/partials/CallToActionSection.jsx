@@ -1,5 +1,6 @@
 import { Link } from '@inertiajs/react';
 import { TransText } from '@/components';
+import { GOOGLE_FORM_URL } from '@/lib/consts';
 
 export function CallToActionSection() {
     return (
@@ -21,16 +22,18 @@ export function CallToActionSection() {
                     className="mt-4 text-lg text-muted-foreground"
                 />
                 <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
-                    <Link
-                        href="/contact"
-                        className="rounded-full bg-alpha px-12 py-4 text-sm font-semibold text-cl-white transition hover:bg-alpha/95"
+                    <a
+                        href={GOOGLE_FORM_URL}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="rounded-full bg-alpha px-12 py-4 text-sm font-semibold text-cl-white uppercase transition hover:bg-alpha/95"
                     >
                         <TransText
                             fr="Devenez membre"
                             ar="انضم كعضو"
                             nl="Word lid"
                         />
-                    </Link>
+                    </a>
                     <Link
                         href="/a-propos"
                         className="rounded-full border border-black/25 px-12 py-4 text-sm font-semibold text-black uppercase transition hover:bg-white/25"

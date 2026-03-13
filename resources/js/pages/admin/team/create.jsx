@@ -4,7 +4,6 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Checkbox } from '@/components/ui/checkbox';
 
 const breadcrumbs = [
     { title: 'Dashboard', href: '/admin/dashboard' },
@@ -15,10 +14,11 @@ const breadcrumbs = [
 export default function AdminTeamCreate() {
     const { data, setData, post, processing, errors } = useForm({
         name: '',
+        category: 'bureau',
         image: null,
         position: '',
         sort_order: '',
-        show_social: false,
+        social_link: '',
     });
 
     const handleSubmit = (e) => {
@@ -64,6 +64,25 @@ export default function AdminTeamCreate() {
                                 {errors.name && (
                                     <p className="text-xs text-destructive">
                                         {errors.name}
+                                    </p>
+                                )}
+                            </div>
+                            <div className="space-y-2">
+                                <Label htmlFor="category">Category *</Label>
+                                <select
+                                    id="category"
+                                    className="w-full rounded-lg border border-input bg-background px-3 py-2 text-sm shadow-sm focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none"
+                                    value={data.category}
+                                    onChange={(e) =>
+                                        setData('category', e.target.value)
+                                    }
+                                >
+                                    <option value="bureau">Bureau</option>
+                                    <option value="honorary">Honorary</option>
+                                </select>
+                                {errors.category && (
+                                    <p className="text-xs text-destructive">
+                                        {errors.category}
                                     </p>
                                 )}
                             </div>
@@ -117,20 +136,25 @@ export default function AdminTeamCreate() {
                                     className="rounded-lg"
                                 />
                             </div>
-                            <div className="flex items-center space-x-2">
-                                <Checkbox
-                                    id="show_social"
-                                    checked={data.show_social}
-                                    onCheckedChange={(checked) =>
-                                        setData('show_social', !!checked)
-                                    }
-                                />
-                                <Label
-                                    htmlFor="show_social"
-                                    className="cursor-pointer font-normal"
-                                >
-                                    Show social links on about page
+                            <div className="space-y-2">
+                                <Label htmlFor="social_link">
+                                    Social link (optional)
                                 </Label>
+                                <Input
+                                    id="social_link"
+                                    type="url"
+                                    value={data.social_link}
+                                    onChange={(e) =>
+                                        setData('social_link', e.target.value)
+                                    }
+                                    placeholder="https://..."
+                                    className="rounded-lg"
+                                />
+                                {errors.social_link && (
+                                    <p className="text-xs text-destructive">
+                                        {errors.social_link}
+                                    </p>
+                                )}
                             </div>
                         </CardContent>
                     </Card>

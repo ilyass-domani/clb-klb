@@ -5,12 +5,12 @@ import {  EventsToolbar, EventsGrid } from './partials';
 import { PageHero } from '@/components';
 
 /** Normalize category string to slug for comparison (e.g. "Conférence" -> "conference"). */
-function categoryToSlug(categorie) {
-    if (!categorie) return '';
+function categoryToSlug(category) {
+    if (!category) return '';
     const raw =
-        typeof categorie === 'string'
-            ? categorie
-            : (categorie.fr ?? categorie.ar ?? categorie.nl ?? '');
+        typeof category === 'string'
+            ? category
+            : (category.fr ?? category.ar ?? category.nl ?? '');
     return raw
         .toLowerCase()
         .normalize('NFD')
@@ -35,7 +35,7 @@ function EventsIndex({ events }) {
             if (statusFilter === 'past' && isUpcoming) return false;
 
             if (categoryFilter !== 'all') {
-                const slug = categoryToSlug(event.categorie);
+                const slug = categoryToSlug(event.category);
                 if (slug !== categoryFilter) return false;
             }
 

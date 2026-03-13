@@ -11,10 +11,11 @@ return new class extends Migration
         Schema::create('team_members', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('image_path');
+            $table->string('image_path')->nullable();
             $table->string('position')->nullable();
             $table->unsignedSmallInteger('sort_order')->default(0);
-            $table->boolean('show_social')->default(false);
+            $table->string('category')->default('bureau');
+            $table->string('social_link')->nullable();
             $table->timestamps();
         });
     }

@@ -12,3 +12,6 @@ export const SOCIAL_MEDIA_LINKS = {
     instagram: 'https://instagram.com/clb_klb',
     youtube: 'https://www.youtube.com/@cercleclb-klb4504',
 } as const;
+
+export const GOOGLE_FORM_URL =
+    'https://docs.google.com/forms/d/e/1FAIpQLSfv9-Lu5orDupTitF_Sm_NSRQsxgAUDF9QYLbeMUoBe1yI2hg/viewform' as const;

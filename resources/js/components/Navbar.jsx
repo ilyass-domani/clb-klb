@@ -1,6 +1,7 @@
 import { Link, usePage, router } from '@inertiajs/react';
 import { useState, useRef, useEffect } from 'react';
 import { TransText } from '@/components';
+import { GOOGLE_FORM_URL } from '@/lib/consts';
 
 const navLinks = [
     {
@@ -160,7 +161,7 @@ export default function Navbar() {
                                     </button>
                                     {newsDropdownOpen && (
                                         <ul
-                                            className="absolute top-full left-0 z-50 mt-1.5 min-w-48 rounded-xl bg-card py-1.5 shadow-[var(--shadow-card-hover)] ring-1 ring-border"
+                                            className="absolute top-full left-0 z-50 mt-1.5 min-w-48 rounded-xl bg-card py-1.5 shadow-(--shadow-card-hover) ring-1 ring-border"
                                             role="menu"
                                         >
                                             {item.items.map(
@@ -224,58 +225,62 @@ export default function Navbar() {
                 </ul>
 
                 <div className="flex items-center gap-3" ref={ref}>
-                    <div className="relative hidden lg:block">
-                        <button
-                            type="button"
-                            onClick={() => setOpen((v) => !v)}
-                            className="flex items-center gap-1 rounded-lg px-2.5 py-1.5 text-sm font-medium text-muted-foreground transition hover:bg-muted hover:text-foreground"
-                            aria-label="Langue"
-                            aria-expanded={open}
-                        >
-                            {LOCALES.find((l) => l.code === locale)?.label ??
-                                'FR'}
-                            <svg
-                                className="h-4 w-4"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke="currentColor"
+                    <div className="hidden lg:flex lg:items-center lg:gap-3">
+                        <div className="relative">
+                            <button
+                                type="button"
+                                onClick={() => setOpen((v) => !v)}
+                                className="flex items-center gap-1 rounded-lg px-2.5 py-1.5 text-sm font-medium text-muted-foreground transition hover:bg-muted hover:text-foreground"
+                                aria-label="Langue"
+                                aria-expanded={open}
                             >
-                                <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    strokeWidth={2}
-                                    d="M19 9l-7 7-7-7"
-                                />
-                            </svg>
-                        </button>
-                        {open && (
-                            <ul className="absolute top-full right-0 z-50 mt-1.5 min-w-32 rounded-xl bg-card py-1.5 shadow-[var(--shadow-card-hover)] ring-1 ring-border">
-                                {LOCALES.map((l) => (
-                                    <li key={l.code}>
-                                        <button
-                                            type="button"
-                                            onClick={() => setLocale(l.code)}
-                                            className={`block w-full px-4 py-2 text-left text-sm transition hover:bg-muted ${l.code === locale ? 'font-medium text-foreground' : 'text-muted-foreground'}`}
-                                        >
-                                            {l.label}
-                                        </button>
-                                    </li>
-                                ))}
-                            </ul>
-                        )}
+                                {LOCALES.find((l) => l.code === locale)
+                                    ?.label ?? 'FR'}
+                                <svg
+                                    className="h-4 w-4"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                >
+                                    <path
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        strokeWidth={2}
+                                        d="M19 9l-7 7-7-7"
+                                    />
+                                </svg>
+                            </button>
+                            {open && (
+                                <ul className="absolute top-full right-0 z-50 mt-1.5 min-w-32 rounded-xl bg-card py-1.5 shadow-(--shadow-card-hover) ring-1 ring-border">
+                                    {LOCALES.map((l) => (
+                                        <li key={l.code}>
+                                            <button
+                                                type="button"
+                                                onClick={() =>
+                                                    setLocale(l.code)
+                                                }
+                                                className={`block w-full px-4 py-2 text-left text-sm transition hover:bg-muted ${l.code === locale ? 'font-medium text-foreground' : 'text-muted-foreground'}`}
+                                            >
+                                                {l.label}
+                                            </button>
+                                        </li>
+                                    ))}
+                                </ul>
+                            )}
+                        </div>
+                        <a
+                            href={GOOGLE_FORM_URL}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="rounded-full bg-alpha px-9 py-3 text-xs font-semibold text-cl-white transition hover:bg-alpha/95"
+                        >
+                            <TransText
+                                fr="Devenez membre"
+                                ar="انضم كعضو"
+                                nl="Word lid"
+                            />
+                        </a>
                     </div>
-                    <Link
-                        href="#"
-                        className="rounded-lg bg-alpha px-4 py-2 text-sm font-medium text-cl-white uppercase transition hover:opacity-95"
-                    >
-                        <TransText
-                            fr="DEVENIR MEMBRE"
-                            ar="كن عضواً"
-                            nl="LID WORDEN"
-                            as="span"
-                        />
-                    </Link>
-
                     <button
                         type="button"
                         onClick={() => setMobileOpen((v) => !v)}
@@ -425,18 +430,18 @@ export default function Navbar() {
                                     </button>
                                 ))}
                             </div>
-                            <Link
-                                href="#"
-                                className="mt-2 inline-block rounded-lg bg-primary px-4 py-3 text-center text-sm font-medium text-primary-foreground"
-                                onClick={() => setMobileOpen(false)}
+                            <a
+                                href={GOOGLE_FORM_URL}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="rounded-full bg-alpha px-12 py-4 text-center text-sm font-semibold text-cl-white transition hover:bg-alpha/95"
                             >
                                 <TransText
-                                    fr="Devenir membre"
-                                    ar="كن عضواً"
-                                    nl="Lid worden"
-                                    as="span"
+                                    fr="Devenez membre"
+                                    ar="انضم كعضو"
+                                    nl="Word lid"
                                 />
-                            </Link>
+                            </a>
                         </div>
                     </div>
                 </div>

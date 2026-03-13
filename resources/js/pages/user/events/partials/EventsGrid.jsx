@@ -44,7 +44,7 @@ function EventCard({ event }) {
                 </div>
                 {/* Category badge */}
                 <span className="absolute top-4 right-4 rounded-full bg-cl-white px-3 py-1 text-xs font-semibold text-cl-black shadow-sm">
-                    {t(event.categorie)}
+                    {t(event.category)}
                 </span>
             </div>
 

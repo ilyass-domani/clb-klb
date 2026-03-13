@@ -67,7 +67,7 @@ class HomeController extends Controller
                 return [
                     'id' => $event->id,
                     'title' => $event->title,
-                    'subtitle' => $event->categorie,
+                    'subtitle' => $event->category,
                     'description' => $event->description,
                     'date' => $dateFormatted,
                     'timeRange' => $timeRange,
@@ -89,7 +89,7 @@ class HomeController extends Controller
                 'imageUrl' => $m->image_url,
                 'position' => $m->position,
                 'description' => $m->description,
-                'show_social' => $m->show_social,
+                'social_link' => $m->social_link,
             ])
             ->values()
             ->all();

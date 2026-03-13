@@ -52,7 +52,7 @@ export function EventDetailHero({ event }) {
                 <div className="flex-1">
                     <TransText
                         className="inline-flex items-center rounded-full bg-alpha px-4 py-1 text-xs font-semibold tracking-wide text-cl-white uppercase"
-                        {...event.categorie}
+                        {...event.category}
                     />
                     <TransText
                         className="mt-4 text-3xl font-bold tracking-tight text-cl-white italic lg:text-4xl"

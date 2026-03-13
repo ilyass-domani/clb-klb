@@ -4,10 +4,6 @@ function MemberCard({ member }) {
     const imageUrl = member.imageUrl || member.image_path;
     return (
         <article className="group relative flex flex-col overflow-hidden rounded-xl text-center transition-all duration-300">
-            <div
-                className="absolute top-0 left-0 h-full w-1 rounded-l-xl bg-primary/0 transition-colors group-hover:bg-primary"
-                aria-hidden
-            />
             <div className="relative mx-auto mt-6 h-28 w-28 shrink-0 overflow-hidden rounded-full sm:h-32 sm:w-32">
                 {imageUrl ? (
                     <img
@@ -49,24 +45,48 @@ function MemberCarousel({ title, members }) {
             <div className="group/carousel mt-12 overflow-hidden">
                 <div className="carousel-loop carousel-loop--slow flex w-max">
                     <div className="flex gap-1 pr-2">
-                        {members.map((member) => (
-                            <div
-                                key={`a-${member.id || member.name}`}
-                                className="w-5 shrink-0 sm:w-75"
-                            >
-                                <MemberCard member={member} />
-                            </div>
-                        ))}
+                        {members.map((member) =>
+                            member.social_link ? (
+                                <a
+                                    key={`a-${member.id || member.name}`}
+                                    href={member.social_link}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="w-70 shrink-0 sm:w-75"
+                                >
+                                    <MemberCard member={member} />
+                                </a>
+                            ) : (
+                                <div
+                                    key={`a-${member.id || member.name}`}
+                                    className="w-5 shrink-0 sm:w-75"
+                                >
+                                    <MemberCard member={member} />
+                                </div>
+                            ),
+                        )}
                     </div>
                     <div className="flex gap-1 pr-2">
-                        {members.map((member) => (
-                            <div
-                                key={`b-${member.id || member.name}`}
-                                className="w-70 shrink-0 sm:w-75"
-                            >
-                                <MemberCard member={member} />
-                            </div>
-                        ))}
+                        {members.map((member) =>
+                            member.social_link ? (
+                                <a
+                                    key={`a-${member.id || member.name}`}
+                                    href={member.social_link}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="w-70 shrink-0 sm:w-75"
+                                >
+                                    <MemberCard member={member} />
+                                </a>
+                            ) : (
+                                <div
+                                    key={`a-${member.id || member.name}`}
+                                    className="w-5 shrink-0 sm:w-75"
+                                >
+                                    <MemberCard member={member} />
+                                </div>
+                            ),
+                        )}
                     </div>
                 </div>
             </div>

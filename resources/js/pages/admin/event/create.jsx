@@ -22,7 +22,7 @@ export default function AdminEventCreate() {
         description: { fr: '', ar: '', nl: '' },
         date: '',
         time: '',
-        categorie: { fr: '', ar: '', nl: '' },
+        category: { fr: '', ar: '', nl: '' },
         price: 0,
         image: '',
         location: '',
@@ -101,24 +101,24 @@ export default function AdminEventCreate() {
                         <div className="grid gap-4 p-6 md:grid-cols-3">
                             {LANGS.map((lang) => (
                                 <div key={lang.code} className="space-y-1.5">
-                                    <Label htmlFor={`categorie_${lang.code}`}>
+                                    <Label htmlFor={`category_${lang.code}`}>
                                         {lang.label}
                                     </Label>
                                     <Input
-                                        id={`categorie_${lang.code}`}
+                                        id={`category_${lang.code}`}
                                         className="rounded-lg"
-                                        value={data.categorie[lang.code]}
+                                        value={data.category[lang.code]}
                                         onChange={(e) =>
                                             setTransField(
-                                                'categorie',
+                                                'category',
                                                 lang.code,
                                                 e.target.value,
                                             )
                                         }
                                     />
-                                    {errors[`categorie.${lang.code}`] && (
+                                    {errors[`category.${lang.code}`] && (
                                         <p className="text-xs text-destructive">
-                                            {errors[`categorie.${lang.code}`]}
+                                            {errors[`category.${lang.code}`]}
                                         </p>
                                     )}
                                 </div>

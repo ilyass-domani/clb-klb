@@ -11,7 +11,7 @@ class Event extends Model
         'description',
         'date',
         'time',
-        'categorie',
+        'category',
         'price',
         'image',
         'location',
@@ -20,7 +20,7 @@ class Event extends Model
     protected $casts = [
         'title' => 'array',
         'description' => 'array',
-        'categorie' => 'array',
+        'category' => 'array',
     ];
 
     public function participants()

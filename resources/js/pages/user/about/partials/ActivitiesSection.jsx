@@ -1,5 +1,6 @@
 import { Link } from '@inertiajs/react';
 import { TransText } from '@/components';
+import { GOOGLE_FORM_URL } from '@/lib/consts';
 
 export function ActivitiesSection() {
     return (
@@ -27,16 +28,18 @@ export function ActivitiesSection() {
                         as="p"
                         className="mt-6 leading-relaxed text-cl-white/90"
                     />
-                    <Link
-                        href="/a-propos"
+                    <a
+                        href={GOOGLE_FORM_URL}
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="mt-8 w-fit rounded-full bg-alpha px-12 py-4 text-sm font-semibold text-cl-white transition hover:bg-alpha/85"
                     >
                         <TransText
-                            fr="Devenir membre"
-                            ar="انضم إلينا"
+                            fr="Devenez membre"
+                            ar="انضم كعضو"
                             nl="Word lid"
                         />
-                    </Link>
+                    </a>
                 </div>
                 <div className="relative aspect-video overflow-hidden rounded-2xl">
                     <img

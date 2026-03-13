@@ -66,7 +66,7 @@ export default function AdminEventIndex({ events }) {
                             header: 'Category',
                             render: (event) => (
                                 <span className="inline-block rounded-full bg-alpha/10 px-2.5 py-0.5 text-xs font-medium text-alpha">
-                                    {event.categorie.fr}
+                                    {event.category.fr}
                                 </span>
                             ),
                         },

@@ -27,16 +27,16 @@ class TeamMemberController extends Controller
     {
         $validated = $request->validate([
             'name' => 'required|string|max:255',
+            'category' => 'required|string|in:bureau,honorary',
             'image' => 'required|image|max:2048',
             'position' => 'nullable|string|max:255',
             'sort_order' => 'nullable|integer|min:0',
-            'show_social' => 'boolean',
+            'social_link' => 'nullable|string|max:255',
         ]);
 
         $path = $request->file('image')->store('images/team', 'public');
         $validated['image_path'] = $path;
         $validated['sort_order'] = (int) ($validated['sort_order'] ?? TeamMember::max('sort_order') + 1);
-        $validated['show_social'] = (bool) ($request->boolean('show_social'));
         unset($validated['image']);
 
         TeamMember::create($validated);
@@ -55,10 +55,11 @@ class TeamMemberController extends Controller
     {
         $validated = $request->validate([
             'name' => 'required|string|max:255',
+            'category' => 'required|string|in:bureau,honorary',
             'image' => 'nullable|image|max:2048',
             'position' => 'nullable|string|max:255',
             'sort_order' => 'nullable|integer|min:0',
-            'show_social' => 'boolean',
+            'social_link' => 'nullable|string|max:255',
         ]);
 
         if ($request->hasFile('image')) {
@@ -73,7 +74,6 @@ class TeamMemberController extends Controller
         if (array_key_exists('sort_order', $validated)) {
             $validated['sort_order'] = (int) $validated['sort_order'];
         }
-        $validated['show_social'] = (bool) $request->boolean('show_social');
 
         $teamMember->update($validated);
 
