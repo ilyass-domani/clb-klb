@@ -48,9 +48,12 @@ class EventController extends Controller
             'categorie.ar' => 'nullable|string|max:255',
             'categorie.nl' => 'nullable|string|max:255',
             'price' => 'required|integer|min:0',
-            'image' => 'required|string|max:255',
+            'image' => 'required|image|mimes:jpg,jpeg,png,webp,gif|max:2048',
             'location' => 'required|string|max:255',
         ]);
+
+        $imagePath = $request->file('image')->store('images/events', 'public');
+        $validated['image'] = $imagePath;
 
         Event::create($validated);
 
@@ -98,9 +101,16 @@ class EventController extends Controller
             'categorie.ar' => 'nullable|string|max:255',
             'categorie.nl' => 'nullable|string|max:255',
             'price' => 'required|integer|min:0',
-            'image' => 'required|string|max:255',
+            'image' => 'nullable|image|mimes:jpg,jpeg,png,webp,gif|max:2048',
             'location' => 'required|string|max:255',
         ]);
+
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('images/events', 'public');
+            $validated['image'] = $imagePath;
+        } else {
+            unset($validated['image']);
+        }
 
         $event->update($validated);
 

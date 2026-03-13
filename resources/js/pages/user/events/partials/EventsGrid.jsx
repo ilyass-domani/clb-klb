@@ -21,16 +21,24 @@ function PinIcon() {
 
 function EventCard({ event }) {
     const { t } = useTrans();
+    const imageSrc =
+        !event?.image
+            ? ''
+            : event.image.startsWith('http')
+                ? event.image
+                : `/storage/${event.image}`;
 
     return (
         <article className="flex flex-col overflow-hidden rounded-2xl border border-border bg-cl-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
             {/* Image section */}
             <div className="relative h-52 w-full overflow-hidden">
-                <img
-                    src={event.image}
-                    alt={t(event.title)}
-                    className="h-full w-full object-cover"
-                />
+                {imageSrc && (
+                    <img
+                        src={imageSrc}
+                        alt={t(event.title)}
+                        className="h-full w-full object-cover"
+                    />
+                )}
                 {/* Date badge */}
                 <div className="absolute top-4 left-4 flex h-14 w-14 flex-col items-center justify-center rounded-full bg-alpha text-cl-white shadow-md">
                     <span className="text-lg leading-none font-bold">

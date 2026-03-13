@@ -24,7 +24,7 @@ export default function AdminEventCreate() {
         time: '',
         categorie: { fr: '', ar: '', nl: '' },
         price: 0,
-        image: '',
+        image: null,
         location: '',
     });
 
@@ -34,7 +34,9 @@ export default function AdminEventCreate() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        post('/admin/events');
+        post('/admin/events', {
+            forceFormData: true,
+        });
     };
 
     return (
@@ -246,15 +248,15 @@ export default function AdminEventCreate() {
                                 </div>
                             </div>
                             <div className="space-y-1.5">
-                                <Label htmlFor="image">Image URL</Label>
+                                <Label htmlFor="image">Image</Label>
                                 <Input
                                     id="image"
+                                    type="file"
+                                    accept="image/*"
                                     className="rounded-lg"
-                                    value={data.image}
                                     onChange={(e) =>
-                                        setData('image', e.target.value)
+                                        setData('image', e.target.files[0] ?? null)
                                     }
-                                    placeholder="https://example.com/image.jpg"
                                 />
                                 {errors.image && (
                                     <p className="text-xs text-destructive">

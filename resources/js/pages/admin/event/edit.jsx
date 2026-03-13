@@ -23,14 +23,14 @@ export default function AdminEventEdit({ event }) {
         { title: 'Edit', href: '#' },
     ];
 
-    const { data, setData, put, processing, errors } = useForm({
+    const { data, setData, post, processing, errors } = useForm({
         title: transValue(event.title),
         description: transValue(event.description),
         date: event.date || '',
         time: event.time || '',
         categorie: transValue(event.categorie),
         price: event.price || 0,
-        image: event.image || '',
+        image: null,
         location: event.location || '',
     });
 
@@ -40,7 +40,11 @@ export default function AdminEventEdit({ event }) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        put(`/admin/events/${event.id}`);
+        post(`/admin/events/${event.id}`, {
+            forceFormData: true,
+            _method: 'put',
+            preserveScroll: true,
+        });
     };
 
     return (
@@ -252,15 +256,15 @@ export default function AdminEventEdit({ event }) {
                                 </div>
                             </div>
                             <div className="space-y-1.5">
-                                <Label htmlFor="image">Image URL</Label>
+                                <Label htmlFor="image">Image</Label>
                                 <Input
                                     id="image"
+                                    type="file"
+                                    accept="image/*"
                                     className="rounded-lg"
-                                    value={data.image}
                                     onChange={(e) =>
-                                        setData('image', e.target.value)
+                                        setData('image', e.target.files[0] ?? null)
                                     }
-                                    placeholder="https://example.com/image.jpg"
                                 />
                                 {errors.image && (
                                     <p className="text-xs text-destructive">
