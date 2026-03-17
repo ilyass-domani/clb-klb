@@ -20,7 +20,7 @@ function AboutIndex({ teamMembers = [], partners = [] }) {
                     ar: 'عنا',
                     nl: 'Over ons',
                 }}
-                backgroundImage="assets/page-hero.webp"
+                backgroundImage="/assets/page-hero.webp"
             />
             <WhoWeAreSection />
             <VisionSection />

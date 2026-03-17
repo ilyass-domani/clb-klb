@@ -59,7 +59,7 @@ function EventsIndex({ events }) {
                         nl: "Ontdek onze bijeenkomsten, conferenties en exclusieve gala's gewijd aan het netwerk",
                     }}
                     reverse
-                    backgroundImage="assets/page-hero.webp"
+                    backgroundImage="/assets/page-hero.webp"
                 />
                 <EventsToolbar
                     statusFilter={statusFilter}

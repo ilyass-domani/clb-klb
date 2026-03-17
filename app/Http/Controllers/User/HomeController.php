@@ -36,7 +36,7 @@ class HomeController extends Controller
                 return [
                     'id' => $blog->id,
                     'title' => $blog->getTranslation('title', $locale),
-                    'excerpt' => $blog->getTranslation('description', $locale),
+                    'description' => $blog->getTranslation('description', $locale),
                     'image_url' => $imageUrl,
                     'published_at' => $blog->created_at?->translatedFormat('j F Y'),
                     'url' => '/blogs/' . $blog->id,

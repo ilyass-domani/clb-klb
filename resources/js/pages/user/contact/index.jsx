@@ -20,7 +20,7 @@ function ContactIndex() {
                         ar: 'اتصل بنا',
                         nl: 'Contact',
                     }}
-                    backgroundImage="assets/page-hero.webp"
+                    backgroundImage="/assets/page-hero.webp"
                 />
                 <ContactHeroSection />
                 <ContactFormSection />
