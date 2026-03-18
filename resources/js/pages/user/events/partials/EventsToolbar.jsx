@@ -1,11 +1,18 @@
 import { useTrans } from '@/hooks/use-trans';
 
 const statusTabs = [
+      { 
+        id: 'all', 
+        label: { fr: 'all', ar: 'all', nl: 'all' } 
+    },
     {
         id: 'upcoming',
         label: { fr: 'À venir', ar: 'القادمة', nl: 'Aankomend' },
     },
-    { id: 'past', label: { fr: 'Passés', ar: 'الماضية', nl: 'Afgelopen' } },
+    { 
+        id: 'past', 
+        label: { fr: 'Passés', ar: 'الماضية', nl: 'Afgelopen' } 
+    },
 ];
 
 const typeFilters = [
