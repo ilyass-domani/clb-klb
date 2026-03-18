@@ -19,7 +19,7 @@ function categoryToSlug(category) {
 }
 
 function EventsIndex({ events }) {
-    const [statusFilter, setStatusFilter] = useState('upcoming');
+    const [statusFilter, setStatusFilter] = useState('all');
     const [categoryFilter, setCategoryFilter] = useState('all');
 
     const filteredEvents = useMemo(() => {
